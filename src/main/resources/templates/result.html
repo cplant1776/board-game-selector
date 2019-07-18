@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
   <!-- Required meta tags -->
@@ -10,18 +10,73 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <title>Plahceholder</title>
+  <link rel="stylesheet" href="css/result.css">
+
+  <title>Placeholder</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script src="js/handlebars-v4.1.2.js"></script>
 </head>
 
 <body>
-  <h1>Plahceholder</h1>
+
+  <script id="result-template" type="text/x-handlebars-template">
+    <tr>
+      <td>
+      <div class="container-fluid" style="border:1px solid #cecece;">
+          <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-8">
+              <h3 class="text-center">
+                {{title}}
+              </h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <img alt="game image" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg"
+                class="img-thumbnail">
+            </div>
+            <div class="col-md-8">
+              <p>
+                {{description}}
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-3">
+              <p>
+                {{rating}}
+              </p>
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-3">
+              <p>
+                {{votes}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </td>
+      </tr>
+  </script>
+
 
   <div class="container">
+      <h1>Search Results</h1>
+      <table class="table" id="search-results-table">
+
+        </table>
   </div>
 
 
+
+
   <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS, then Handlebars -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -31,6 +86,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+  <script src="js/result.js"></script>
 </body>
 
 </html>

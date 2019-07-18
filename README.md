@@ -12,10 +12,11 @@ This project has three (selfish) objectives:
 
 ## Current Roadmap (To-Do)
 
-1. Complete search form, search result, and individual game pages
-2. Add mySQL functionality to existing Game data model
-3. Allow users to add new games
-4. Allow users to edit **added** games
-5. Add user authentication
-6. Restrict users from altering games they did not add
-7. Allow users to leave comments and add their rating to Games
+1. Add mySQL functionality to existing Game data model
+1. Tie form data to backend query
+1. Pass query result data to populate web pages
+1. Allow users to add new games
+1. Allow users to edit **added** games
+1. Add user authentication
+1. Restrict users from altering games they did not add
+1. Allow users to leave comments and add their rating to Games

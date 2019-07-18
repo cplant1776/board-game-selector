@@ -7,30 +7,239 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <title>Plahceholder</title>
+  <link rel="stylesheet" href="css/index.css">
+
+  <title>Hello, world!</title>
 </head>
 
 <body>
-  <h1>Plahceholder</h1>
 
   <div class="container">
-  </div>
+    <h1 class="text-center">Search Filters</h1>
+    <br>
+    <br>
+    <form>
 
+      <!-- Range filters -->
+      <div class="form-group row">
+        <label for="rank_min" class="col-sm-2 col-form-label">Rank</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="rank_min" placeholder="minimum">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="rank_max" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="rank_max" placeholder="maximum">
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label for="num_players_min" class="col-sm-2 col-form-label">Number of Players</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="num_players_min" placeholder="minimum">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="num_players_max" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="num_players_max" placeholder="maximum">
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label for="year_min" class="col-sm-2 col-form-label">Year Published</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="year_min" placeholder="minimum">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="year_max" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="year_max" placeholder="maximum">
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label for="avg_play_time_min" class="col-sm-2 col-form-label">Average Play Time</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="avg_play_time_min" placeholder="minimum">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="avg_play_time_max" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="avg_play_time_max" placeholder="maximum">
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label for="min_play_time_min" class="col-sm-2 col-form-label">Minimum Play Time</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="min_play_time_min" placeholder="minimum">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="min_play_time_max" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="min_play_time_max" placeholder="maximum">
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label for="max_play_time_min" class="col-sm-2 col-form-label">Maximum Play Time</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="max_play_time_min" placeholder="maximum">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="avg_play_time_min" class="col-sm-2 col-form-label">Average Play Time</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="avg_play_time_min" placeholder="minimum">
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label for="avg_play_time_max" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="avg_play_time_max" placeholder="maximum">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="num_votes_min" class="col-sm-2 col-form-label"># of Community Votes</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="num_votes_min" placeholder="minimum">
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label for="num_votes_max" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="num_votes_max" placeholder="maximum">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="age_min" class="col-sm-2 col-form-label">Recommended Age</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="age_min" placeholder="minimum">
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label for="age_max" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="age_max" placeholder="maximum">
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label for="fans_min" class="col-sm-2 col-form-label"># of Fans</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="fans_min" placeholder="minimum">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="fans_max" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="fans_max" placeholder="maximum">
+        </div>
+      </div>
+
+
+
+      <!-- Mechanics modal button -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mechanics_modal">
+        Mechanics
+      </button>
+
+      <!-- Mechanics Modal -->
+      <div class="modal fade" id="mechanics_modal" tabindex="-1" role="dialog" aria-labelledby="mechanics_modal_label"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="mechanics_modal_label">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <ul class="checkbox-grid" id="categories_grid">
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Categories modal button -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#categories_modal">
+        Categories
+      </button>
+
+      <!-- Categories Modal -->
+      <div class="modal fade" id="categories_modal" tabindex="-1" role="dialog" aria-labelledby="categories_modal_label"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="categories_modal_label">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <ul class="checkbox-grid" id="mechanics_grid">
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </div>
+
+
+
+    </form>
+  </div>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>

@@ -62,8 +62,8 @@ if __name__ == '__main__':
     headers = {'User-Agent': SETTINGS['user_agent']}
 
     # test_encoding(SETTINGS['data_file'])
-    # scrape_categories(headers)
-    # scrape_mechanics(headers)
+    scrape_categories(headers)
+    scrape_mechanics(headers)
 
     """
     with open(SETTINGS['data_file'], 'r', encoding='utf-8') as f:

@@ -10,13 +10,115 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+  <link rel="stylesheet" type="text/css" href="css/game.css">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script src="js/handlebars-v4.1.2.js"></script>
+
   <title>Plahceholder</title>
 </head>
 
 <body>
-  <h1>Plahceholder</h1>
 
   <div class="container">
+    <div class="header">
+      <h1 class="text-center">GAME TITLE</h1>
+    </div>
+    <br>
+    <br>
+    <div>
+      <h2>Info</h2>
+    </div>
+
+    <!-- Game Metadata -->
+    <div id=game-metadata-placeholder></div>
+    <br>
+    <br>
+
+    <script id="metadata-row-template" type="text/x-handlebars-template">
+        <div class="row" id="gameMetadataRow">
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-12" id="gameImg">
+                  <img src="assets/img/placeholder.jpg" class="img-thumbnail">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-8" id="gameTitle">
+                <h2 id="gameTitle">{{title}}</h2>
+              </div>
+              <div class="col-md-4" id="gameRank">
+                <h2>Rank: {{rank}}</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4" id="gameNumOfPlayers">
+                <h5># of Players: {{numOfPlayersMin}} to {{numOfPlayersMax}}</h5>
+              </div>
+              <div class="col-md-4" id="gamePlayTime">
+                <h5>Playtime: {{playtimeAvg}} min</h5>
+              </div>
+              <div class="col-md-4" id="gameAge">
+                <h5>Recommended age: {{age}}+</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-12" id="gameDesigner">
+                    <p>Designer: {{designer}}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12" id="gamePublisher">
+                    <p>Publisher: {{publisher}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6" id="bggLink">
+                <p>Board Game Geeks Link</p>
+                <p><a href={{bggURL}}>{{bggURL}}</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </script>
+
+    <!-- Game Description -->
+    <div id=game-description-placeholder></div>
+    <br>
+    <br>
+
+    <script id="description-row-template" type="text/x-handlebars-template">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Description</h2>
+            {{{description}}}
+        </div>
+      </div>
+  </script>
+
+    <!-- Comments -->
+    <div class="row">
+      <div class="col-md-12" id="comment-row">
+        <h2>Comments</h2>
+
+      </div>
+    </div>
+
+    <script id="comment-template" type="text/x-handlebars-template">
+        <div class="media comment">
+          <img class="align-self-center mr-3 img-thumbnail avatar" src={{imgURL}}
+            alt="Generic placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0" class="comment-title">{{title}}</h5>
+              {{{body}}}
+          </div>
+        </div>
+    </script>
+
   </div>
 
 
@@ -31,6 +133,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+  <script src="js/game.js"></script>
 </body>
 
 </html>
