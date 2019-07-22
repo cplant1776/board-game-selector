@@ -1,17 +1,13 @@
 package com.bgs.BoardGameSelector.dao;
 
-import com.bgs.BoardGameSelector.model.Game;
+        import com.bgs.BoardGameSelector.model.Game;
+        import org.springframework.data.repository.CrudRepository;
+        import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
+        import java.util.List;
 
-public interface GameDao {
-    // Create
-    int insertNewGame(UUID gameId, Game game);
+@Transactional
+public interface GameDao extends CrudRepository<Game, Long> {
 
-    // Read
-    Game selectGameById(UUID gameId);
-    // Update
-    int updateGameById(UUID gameId, Game game);
-    // Destroy
-    int deleteGameById(UUID gameId);
+        public List<Game> findByRank(int rank);
 }
