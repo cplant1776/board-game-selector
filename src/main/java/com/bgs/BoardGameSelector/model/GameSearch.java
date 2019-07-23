@@ -20,28 +20,57 @@ public class GameSearch {
     public int maxAge;
     public int minFans;
     public int maxFans;
-    public List<String> mechanic;
-    public List<String> category;
+    public String mechanic;
+    public String category;
 
-    public GameSearch()
+    public GameSearch(int minRank, int maxRank, int minNumOfPlayers, int maxNumOfPlayers, int minYearPublished,
+                      int maxYearPublished, int minAvgPlayTime, int maxAvgPlayTime, int minMinPlayTime,
+                      int maxMinPlayTime, int minMaxPlayTime, int maxMaxPlayTime, int minVotes, int maxVotes,
+                      int minAge, int maxAge, int minFans, int maxFans, String mechanic, String category)
     {
-        minRank = 1;
-        maxRank = 25;
-        minNumOfPlayers = -1;
-        maxNumOfPlayers = -1;
-        minYearPublished = -1;
-        maxYearPublished = -1;
-        minAvgPlayTime = -1;
-        maxAvgPlayTime = -1;
-        minMinPlayTime = -1;
-        maxMinPlayTime = -1;
-        minMaxPlayTime = -1;
-        maxMaxPlayTime = -1;
-        minVotes = -1;
-        maxVotes = -1;
-        minAge = -1;
-        maxAge = -1;
-        minFans = -1;
-        maxFans = -1;
+        this.minRank = minRank;
+        this.maxRank = maxRank;
+        this.minNumOfPlayers = minNumOfPlayers;
+        this.maxNumOfPlayers = maxNumOfPlayers;
+        this.minYearPublished = minYearPublished;
+        this.maxYearPublished = maxYearPublished;
+        this.minAvgPlayTime = minAvgPlayTime;
+        this.maxAvgPlayTime = maxAvgPlayTime;
+        this.minMinPlayTime = minMinPlayTime;
+        this.maxMinPlayTime = maxMinPlayTime;
+        this.minMaxPlayTime = minMaxPlayTime;
+        this.maxMaxPlayTime = maxMaxPlayTime;
+        this.minVotes = minVotes;
+        this.maxVotes = maxVotes;
+        this.minAge = minAge;
+        this.maxAge = maxAge;
+        this.minFans = minFans;
+        this.maxFans = maxFans;
+        this.mechanic = mechanic;
+        this.category = category;
     }
+
+    public GameSearch() {
+        this.minRank = 0;
+        this.maxRank = 0;
+        this.minNumOfPlayers = 0;
+        this.maxNumOfPlayers = 0;
+        this.minYearPublished = 0;
+        this.maxYearPublished = 0;
+        this.minAvgPlayTime = 0;
+        this.maxAvgPlayTime = 0;
+        this.minMinPlayTime = 0;
+        this.maxMinPlayTime = 0;
+        this.minMaxPlayTime = 0;
+        this.maxMaxPlayTime = 0;
+        this.minVotes = 0;
+        this.maxVotes = 0;
+        this.minAge = 0;
+        this.maxAge = 0;
+        this.minFans = 0;
+        this.maxFans = 0;
+        this.mechanic = "";
+        this.category = "";
+    }
+
 }
