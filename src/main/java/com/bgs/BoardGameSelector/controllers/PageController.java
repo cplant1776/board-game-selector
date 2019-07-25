@@ -8,18 +8,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PageController {
 
     @GetMapping("/search")
     public String search(Model model) {
-        model.addAttribute("gameSearch", new GameSearch());
         return "search";
     }
 
     @PostMapping("/search")
-    public String searchSubmit(@ModelAttribute GameSearch gameSearch) {
+    public String searchSubmit(Model model) {
         return "tester";
     }
 
@@ -29,8 +29,10 @@ public class PageController {
         return "tester";
     }
 
-    @PostMapping("/tester")
-    public String greetingSubmit(@ModelAttribute Greeting greeting) {
+    @GetMapping("/resulttoo")
+    public String greetingSubmit(@RequestParam(name="one", required=false, defaultValue="1") String one,
+                                 @RequestParam(name="two", required=false, defaultValue="2") String two,
+                                 @RequestParam(name="three", required=false, defaultValue="3") String three) {
         return "resulttoo";
     }
 

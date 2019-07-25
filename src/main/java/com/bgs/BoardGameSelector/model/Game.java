@@ -49,11 +49,11 @@ public class Game {
     @Column(name = "num_votes")
     private Integer num_votes;
 
-    @Column(name = "image_url")
-    private String image_url;
+    @Column(name = "img_url")
+    private String img_url;
 
-    @Column(name = "thumbnail_url")
-    private String thumbnail_url;
+    @Column(name = "thumb_url")
+    private String thumb_url;
 
     @Column(name = "age")
     private Integer age;
@@ -67,14 +67,14 @@ public class Game {
     @Column(name = "publisher")
     private String publisher;
 
-    @Column(name = "num_fans")
-    private Integer num_fans;
+    @Column(name = "fans")
+    private Integer fans;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "desc")
+    private String desc;
 
-    @Column(name = "is_user_added")
-    private Boolean is_user_added;
+    @Column(name = "is_user_made")
+    private Boolean is_user_made;
 
     public Long getId() {
         return Id;
@@ -128,12 +128,12 @@ public class Game {
         return num_votes;
     }
 
-    public String getImage_url() {
-        return image_url;
+    public String getImg_url() {
+        return img_url;
     }
 
-    public String getThumbnail_url() {
-        return thumbnail_url;
+    public String getThumb_url() {
+        return thumb_url;
     }
 
     public Integer getAge() {
@@ -152,16 +152,16 @@ public class Game {
         return publisher;
     }
 
-    public Integer getNum_fans() {
-        return num_fans;
+    public Integer getFans() {
+        return fans;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDesc() {
+        return desc;
     }
 
-    public Boolean getIs_user_added() {
-        return is_user_added;
+    public Boolean getIs_user_made() {
+        return is_user_made;
     }
 
 
@@ -213,12 +213,12 @@ public class Game {
         this.num_votes = num_votes;
     }
 
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
     }
 
-    public void setThumbnail_url(String thumbnail_url) {
-        this.thumbnail_url = thumbnail_url;
+    public void setThumb_url(String thumb_url) {
+        this.thumb_url = thumb_url;
     }
 
     public void setAge(Integer age) {
@@ -237,23 +237,23 @@ public class Game {
         this.publisher = publisher;
     }
 
-    public void setNum_fans(Integer num_fans) {
-        this.num_fans = num_fans;
+    public void setFans(Integer fans) {
+        this.fans = fans;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
-    public void setIs_user_added(Boolean is_user_added) {
-        this.is_user_added = is_user_added;
+    public void setIs_user_made(Boolean is_user_made) {
+        this.is_user_made = is_user_made;
     }
 
 
     public Game(Integer rank, String bggURL, Integer gameId, String name, Integer minPlayers, Integer maxPlayers,
                 Integer avgPlayTime, Integer minPlayTime, Integer maxPlayTime, Integer year, Double avgRating,
                 Integer numOfVotes, String imageURL, String thumbnailURL, Integer age, String mechanics,
-                String categories, String publisher, Integer numOfFans, String description, Boolean isUserAdded)
+                String categories, String publisher, Integer numOfFans, String desc, Boolean isUserAdded)
     {
         this.rank = rank;
         this.bgg_url = bggURL;
@@ -267,15 +267,15 @@ public class Game {
         this.year = year;
         this.avg_rating = avgRating;
         this.num_votes = numOfVotes;
-        this.image_url = imageURL;
-        this.thumbnail_url = thumbnailURL;
+        this.img_url = imageURL;
+        this.thumb_url = thumbnailURL;
         this.age = age;
         this.mechanic = mechanics;
         this.category = categories;
         this.publisher = publisher;
-        this.num_fans = numOfFans;
-        this.description = description;
-        this.is_user_added = isUserAdded;
+        this.fans = numOfFans;
+        this.desc = desc;
+        this.is_user_made = isUserAdded;
     }
 
     public Game() {
@@ -291,13 +291,13 @@ public class Game {
         this.year = 123;
         this.avg_rating = 123.1;
         this.num_votes = 123;
-        this.image_url = "123";
-        this.thumbnail_url = "123";
+        this.img_url = "123";
+        this.thumb_url = "123";
         this.age = 123;
         this.publisher = "123";
-        this.num_fans = 123;
-        this.description = "123123123123123123123";
-        this.is_user_added = false;
+        this.fans = 123;
+        this.desc = "123123123123123123123";
+        this.is_user_made = false;
     }
 
 }

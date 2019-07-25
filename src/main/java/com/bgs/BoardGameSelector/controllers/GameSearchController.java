@@ -17,25 +17,8 @@ public class GameSearchController {
     @Autowired
     private GameSearchDao gameSearchDao;
 
-//    @RequestMapping("/q/get-by-rank")
-//    @ResponseBody
-//    public String getByRank(Integer rank) {
-//        GameSearch gameSearch = new GameSearch();
-//        GameSpecification spec = new GameSpecification(gameSearch);
-//        List<Game> result = gameSearchDao.findAll(spec);
-//
-//        System.out.println(result.size());
-//        for(int i=0; i < result.size(); i++)
-//        {
-//            System.out.println(result.get(i).getName());
-//            System.out.println(result.get(i).getRank());
-//        }
-//
-//        return "1";
-//    }
-
     @GetMapping("/query")
-    public String greeting( @RequestParam(name="minRank", required=false, defaultValue="0") int minRank,
+    public String runSearch( @RequestParam(name="minRank", required=false, defaultValue="0") int minRank,
                             @RequestParam(name="maxRank", required = false, defaultValue = "10000") int maxRank,
                             @RequestParam(name="minNumOfPlayers", required = false, defaultValue = "1") int minNumOfPlayers,
                             @RequestParam(name="maxNumOfPlayers", required = false, defaultValue = "500") int maxNumOfPlayers,
@@ -72,6 +55,6 @@ public class GameSearchController {
             System.out.println(game.getRank());
         }
 
-        return "greeting";
+        return "result";
     }
 }

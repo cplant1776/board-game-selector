@@ -1,3 +1,12 @@
+$("#submissionBtn").click(function()
+    {
+        // Get form parameters
+        values = $("form").serialize();
+        // Redirect to url
+        window.location.href = "http://localhost:8080/query?" + values;
+    }
+);
+
 
 
 $(document).ready(function() {
