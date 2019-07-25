@@ -14,62 +14,62 @@
 
   <title>Placeholder</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <script src="js/handlebars-v4.1.2.js"></script>
 </head>
 
 <body>
 
-  <script id="result-template" type="text/x-handlebars-template">
-    <tr>
-      <td>
-      <div class="container-fluid" style="border:1px solid #cecece;">
-          <div class="row">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-8">
-              <h3 class="text-center">
-                {{title}}
-              </h3>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <img alt="game image" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg"
-                class="img-thumbnail">
-            </div>
-            <div class="col-md-8">
-              <p>
-                {{description}}
-              </p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-3">
-              <p>
-                {{rating}}
-              </p>
-            </div>
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-3">
-              <p>
-                {{votes}}
-              </p>
-            </div>
-          </div>
-        </div>
-      </td>
-      </tr>
-  </script>
+
 
 
   <div class="container">
       <h1>Search Results</h1>
       <table class="table" id="search-results-table">
 
-        </table>
+        <th:block th:each="game, count: ${games}">
+        <tr th:if="${count.index < 5}">
+          <td>
+            <div class="container-fluid" style="border:1px solid #cecece;">
+              <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-8">
+                  <h3 class="text-center" th:text="${game.name}">
+
+                  </h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <img alt="game image" th:src="${game.thumb_url}"
+                       class="img-thumbnail">
+                </div>
+                <div class="col-md-8">
+                  <p th:utext="'Description' + '<br><br>' + ${{#strings.length(game.desc) > 400} ? #strings.substring(game.desc,0,400)+'. . .' : game.desc}">
+
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-3">
+                  <p th:text="'Rank: ' + ${game.rank}">
+
+                  </p>
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-3">
+                  <p th:text="'Votes: ' + ${game.num_votes}">
+
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </th:block>
+    </table>
   </div>
 
 

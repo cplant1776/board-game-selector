@@ -12,7 +12,6 @@ This project has three (selfish) objectives:
 
 ## Current Roadmap (To-Do)
 
-1. Pass query result data to populate web pages
 1. Allow users to add new games
 1. Allow users to edit **added** games
 1. Add user authentication

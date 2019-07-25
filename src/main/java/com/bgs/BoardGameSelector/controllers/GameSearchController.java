@@ -37,7 +37,8 @@ public class GameSearchController {
                             @RequestParam(name="minFans", required = false, defaultValue = "0") int minFans,
                             @RequestParam(name="maxFans", required = false, defaultValue = "999999") int maxFans,
                             @RequestParam(name="mechanic", required = false, defaultValue = "") String mechanic,
-                            @RequestParam(name="category", required = false, defaultValue = "") String category) {
+                            @RequestParam(name="category", required = false, defaultValue = "") String category,
+                             Model model) {
 
         // Instantiate search criteria
         GameSearch gameSearch = new GameSearch(minRank, maxRank, minNumOfPlayers, maxNumOfPlayers,
@@ -49,6 +50,10 @@ public class GameSearchController {
         GameSpecification spec = new GameSpecification(gameSearch);
         List<Game> result = gameSearchDao.findAll(spec);
 
+        // Agge results to search result page
+        model.addAttribute("games", result);
+
+        // Debug purposes
         System.out.println(result.size());
         for (Game game : result) {
             System.out.println(game.getName());

@@ -20,7 +20,7 @@ public class Game {
 
     @Id
     @Column(name = "game_id")
-    private Integer game_id;
+    private Integer gameId;
 
     @Column(name = "name")
     private String name;
@@ -64,6 +64,9 @@ public class Game {
     @Column(name = "category")
     private String category;
 
+    @Column(name = "designer")
+    private String designer;
+
     @Column(name = "publisher")
     private String publisher;
 
@@ -88,8 +91,8 @@ public class Game {
         return bgg_url;
     }
 
-    public Integer getGame_id() {
-        return game_id;
+    public Integer getGameId() {
+        return gameId;
     }
 
     public String getName() {
@@ -148,6 +151,8 @@ public class Game {
         return category;
     }
 
+    public String getDesigner() { return designer; }
+
     public String getPublisher() {
         return publisher;
     }
@@ -173,8 +178,8 @@ public class Game {
         this.bgg_url = bgg_url;
     }
 
-    public void setGame_id(Integer game_id) {
-        this.game_id = game_id;
+    public void setGameId(Integer gameId) {
+        this.gameId = gameId;
     }
 
     public void setName(String name) {
@@ -233,6 +238,8 @@ public class Game {
         this.category = category;
     }
 
+    public void setDesigner(String designer) { this.designer = designer; }
+
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
@@ -253,11 +260,11 @@ public class Game {
     public Game(Integer rank, String bggURL, Integer gameId, String name, Integer minPlayers, Integer maxPlayers,
                 Integer avgPlayTime, Integer minPlayTime, Integer maxPlayTime, Integer year, Double avgRating,
                 Integer numOfVotes, String imageURL, String thumbnailURL, Integer age, String mechanics,
-                String categories, String publisher, Integer numOfFans, String desc, Boolean isUserAdded)
+                String categories, String designer, String publisher, Integer numOfFans, String desc, Boolean isUserAdded)
     {
         this.rank = rank;
         this.bgg_url = bggURL;
-        this.game_id = gameId;
+        this.gameId = gameId;
         this.name = name;
         this.min_player = minPlayers;
         this.max_player = maxPlayers;
@@ -272,6 +279,7 @@ public class Game {
         this.age = age;
         this.mechanic = mechanics;
         this.category = categories;
+        this.designer = designer;
         this.publisher = publisher;
         this.fans = numOfFans;
         this.desc = desc;
@@ -281,7 +289,7 @@ public class Game {
     public Game() {
         this.rank = 123;
         this.bgg_url = "123";
-        this.game_id = 123;
+        this.gameId = 123;
         this.name = "123";
         this.min_player = 123;
         this.max_player = 123;
