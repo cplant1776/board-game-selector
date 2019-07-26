@@ -19,100 +19,96 @@
 
 <body>
 
+
   <div class="container">
     <div class="header">
       <h1 class="text-center" th:text="${game.name}"></h1>
     </div>
-    <br>
-    <br>
-    <div>
-      <h2>Info</h2>
-    </div>
+    <br><br><br>
 
     <!-- Game Metadata -->
-    <div id=game-metadata-placeholder></div>
-    <br>
-    <br>
-
-        <div class="row" id="gameMetadataRow">
-          <div class="col-md-4">
-            <div class="row">
-              <div class="col-md-12" id="gameImg">
-                  <img th:src="${game.img_url}" class="img-thumbnail">
-              </div>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <div class="row">
-              <div class="col-md-8" >
-                <h2 id="gameTitle" th:text="${game.name}"></h2>
-              </div>
-              <div class="col-md-4">
-                <h2 th:text="'Rank: ' + ${game.rank}"></h2>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4" id="gameNumOfPlayers">
-                <h5 th:text="'# of Players: ' + ${game.min_player} + ' to ' + ${game.max_player}"></h5>
-              </div>
-              <div class="col-md-4" id="gamePlayTime">
-                <h5 th:text="'Average Playtime: ' + ${game.avg_play_time} +  ' min'"></h5>
-              </div>
-              <div class="col-md-4" id="gameAge">
-                <h5 th:text="'Recommended Age: ' + ${game.age} + '+'"></h5>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="row">
-                  <div class="col-md-12" id="gameDesigner">
-                    <p th:text="'Designer: ' + ${game.designer}"></p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12" id="gamePublisher">
-                    <p th:text="'Publisher: ' + ${game.publisher}"></p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6" id="bggLink">
-                <p>Board Game Geeks Link</p>
-                <p><a th:href=${game.bgg_url} th:text="${game.bgg_url}"></a></p>
-              </div>
+    <div class=game-data-card>
+      <div class="row" id="gameMetadataRow">
+        <div class="col-md-4">
+          <div class="row thumb-img-wrap">
+            <div class="col-md-12" id="gameImg">
+              <img th:src="${game.img_url}" class="img-thumbnail">
             </div>
           </div>
         </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-8">
+              <h2 class="title-text" th:text="${game.name}"></h2>
+            </div>
+            <div class="col-md-4">
+              <h2 class=”rank-text“ th:text="'Rank: ' + ${game.rank}"></h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4" id="gameNumOfPlayers">
+              <h5 th:text="'# of Players: ' + ${game.min_player} + ' to ' + ${game.max_player}"></h5>
+            </div>
+            <div class="col-md-4" id="gamePlayTime">
+              <h5 th:text="'Average Playtime: ' + ${game.avg_play_time} +  ' min'"></h5>
+            </div>
+            <div class="col-md-4" id="gameAge">
+              <h5 th:text="'Recommended Age: ' + ${game.age} + '+'"></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-12" id="gameDesigner">
+                  <p th:text="'Designer: ' + ${game.designer}"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12" id="gamePublisher">
+                  <p th:text="'Publisher: ' + ${game.publisher}"></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" id="bggLink">
+              <p>Board Game Geeks Link</p>
+              <p><a th:href=${game.bgg_url} th:text="${game.bgg_url}"></a></p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <!-- Game Description -->
-    <div id=game-description-placeholder></div>
-    <br>
-    <br>
+      <!-- Game Description -->
+      <div id=game-description-placeholder></div>
+      <br>
+      <br>
 
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 description-box">
           <h2>Description</h2>
           <p th:text="${game.desc}"></p>
         </div>
       </div>
 
-    <!-- Comments -->
-<!--    <div class="row">-->
-<!--      <div class="col-md-12" id="comment-row">-->
-<!--        <h2>Comments</h2>-->
+      <!-- Comments -->
+      <!--    <div class="row">-->
+      <!--      <div class="col-md-12" id="comment-row">-->
+      <!--        <h2>Comments</h2>-->
 
-<!--      </div>-->
-<!--    </div>-->
+      <!--      </div>-->
+      <!--    </div>-->
 
-<!--    <script id="comment-template" type="text/x-handlebars-template">-->
-<!--        <div class="media comment">-->
-<!--          <img class="align-self-center mr-3 img-thumbnail avatar" src={{imgURL}}-->
-<!--            alt="Generic placeholder image">-->
-<!--          <div class="media-body">-->
-<!--            <h5 class="mt-0" class="comment-title">{{title}}</h5>-->
-<!--              {{{body}}}-->
-<!--          </div>-->
-<!--        </div>-->
-<!--    </script>-->
+      <!--    <script id="comment-template" type="text/x-handlebars-template">-->
+      <!--        <div class="media comment">-->
+      <!--          <img class="align-self-center mr-3 img-thumbnail avatar" src={{imgURL}}-->
+      <!--            alt="Generic placeholder image">-->
+      <!--          <div class="media-body">-->
+      <!--            <h5 class="mt-0" class="comment-title">{{title}}</h5>-->
+      <!--              {{{body}}}-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--    </script>-->
+    </div>
+
 
   </div>
 

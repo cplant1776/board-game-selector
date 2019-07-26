@@ -28,7 +28,7 @@
         <th:block th:each="game, count: ${games}">
         <tr th:if="${count.index < 5}">
           <td>
-            <div class="container-fluid" style="border:1px solid #cecece;">
+            <div class="container-fluid result-card">
               <div class="row">
                 <div class="col-md-4">
                 </div>
@@ -39,7 +39,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 thumb-img-wrap">
                   <img alt="game image" th:src="${game.thumb_url}"
                        class="img-thumbnail">
                 </div>
@@ -53,14 +53,14 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-3">
-                  <p th:text="'Rank: ' + ${game.rank}">
+                  <p class="rank-text" th:text="'Rank: ' + ${game.rank}">
 
                   </p>
                 </div>
                 <div class="col-md-2">
                 </div>
                 <div class="col-md-3">
-                  <p th:text="'Votes: ' + ${game.num_votes}">
+                  <p class="votes-text" th:text="'Votes: ' + ${game.num_votes}">
 
                   </p>
                 </div>

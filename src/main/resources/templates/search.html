@@ -17,235 +17,156 @@
 
 <body>
 
-<div class="container">
-  <span th:text="'Hello, ' + ${message}"></span>
-  <h1 class="text-center">Search Filters</h1>
-  <br>
-  <br>
-  <form action="http://localhost:8080/query" method="get">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-9 col-md-7 col-lg-10 mx-auto">
+            <div class="card card-signin my-5">
+              <div class="card-body">
+                <h5 class="card-title text-center">Filters</h5>
+                <form class="form-signin"  action="http://localhost:8080/query" method="get">
+    
+                  <!-- Rank -->
+                  <div class="form-row">
+                    <div class="form-group col-md-2">
+                      <span class="filter-text">Rank</span>
+                    </div>
+                    <div class="form-group col-md-1">
+                      <input type="text" class="form-control" name="rank-min" placeholder="min">
+                    </div>
+                    <div class="form-group col-md-2">
+                      <p class="filter-text">to</p>
+                    </div>
+                    <div class="form-group col-md-1">
+                      <input type="text" class="form-control" name="rank-max" placeholder="max">
+                    </div>
+    
+                    <!-- # of Players -->
+                    <div class="form-group col-md-2">
+                      <p class="filter-text"># of Players</p>
+                    </div>
+                    <div class="form-group col-md-1">
+                      <input type="text" class="form-control" name="num-of-players-min" placeholder="min">
+                    </div>
+                    <div class="form-group col-md-2">
+                      <p class="filter-text">to</p>
+                    </div>
+                    <div class="form-group col-md-1">
+                      <input type="text" class="form-control" name="num-of-players-max" placeholder="max">
+                    </div>
+    
+                    <!-- Year -->
+    
+                    <div class="form-row">
+                      <div class="form-group col-md-2">
+                        <span class="filter-text">Year</span>
+                      </div>
+                      <div class="form-group col-md-1">
+                        <input type="text" class="form-control" name="year-min" placeholder="min">
+                      </div>
+                      <div class="form-group col-md-2">
+                        <p class="filter-text">to</p>
+                      </div>
+                      <div class="form-group col-md-1">
+                        <input type="text" class="form-control" name="year-max" placeholder="max">
+                      </div>
+    
+                      
+                      <!-- Avg Play Time -->
+                      <div class="form-group col-md-2">
+                        <p class="filter-text">Avg Play Tim</p>
+                      </div>
+                      <div class="form-group col-md-1">
+                        <input type="text" class="form-control" name="avg-play-time-min" placeholder="min">
+                      </div>
+                      <div class="form-group col-md-2">
+                        <p class="filter-text">to</p>
+                      </div>
+                      <div class="form-group col-md-1">
+                        <input type="text" class="form-control" name="avg-play-time-max" placeholder="max">
+                      </div>
+    
+                      <!-- Min Play Time -->
+                      <div class="form-row">
+                        <div class="form-group col-md-2">
+                          <span class="filter-text">Min Play Time</span>
+                        </div>
+                        <div class="form-group col-md-1">
+                          <input type="text" class="form-control" name="min-play-time-min" placeholder="min">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <p class="filter-text">to</p>
+                        </div>
+                        <div class="form-group col-md-1">
+                          <input type="text" class="form-control" name="min-play-time-max" placeholder="max">
+                        </div>
+    
+                        <!-- Max Play Time -->
+                        <div class="form-group col-md-2">
+                          <p class="filter-text">Max Play Time</p>
+                        </div>
+                        <div class="form-group col-md-1">
+                          <input type="text" class="form-control" name="max-play-time-min" placeholder="min">
+                        </div>
+                        <div class="form-group col-md-2">
+                          <p class="filter-text">to</p>
+                        </div>
+                        <div class="form-group col-md-1">
+                          <input type="text" class="form-control" name="max-play-time-max" placeholder="max">
+                        </div>
+    
+                        <!-- Votes -->
+                        <div class="form-row">
+                          <div class="form-group col-md-2">
+                            <span class="filter-text"># of Votes</span>
+                          </div>
+                          <div class="form-group col-md-1">
+                            <input type="text" class="form-control" name="votes-min" placeholder="min">
+                          </div>
+                          <div class="form-group col-md-2">
+                            <p class="filter-text">to</p>
+                          </div>
+                          <div class="form-group col-md-1">
+                            <input type="text" class="form-control" name="votes-max" placeholder="max">
+                          </div>
+    
+                          <!-- Recommended Age -->
+                          <div class="form-group col-md-2">
+                            <p class="filter-text">Rec. Age</p>
+                          </div>
+                          <div class="form-group col-md-1">
+                            <input type="text" class="form-control" name="age-min" placeholder="min">
+                          </div>
+                          <div class="form-group col-md-2">
+                            <p class="filter-text">to</p>
+                          </div>
+                          <div class="form-group col-md-1">
+                            <input type="text" class="form-control" name="age-max" placeholder="max">
+                          </div>
+                          <!-- # of Fans -->
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <span class="filter-text"># of Fans</span>
+                            </div>
+                            <div class="form-group col-md-2">
+                              <input type="text" class="form-control" name="fans-min" placeholder="min">
+                            </div>
+                            <div class="form-group col-md-4">
+                              <p class="filter-text">to</p>
+                            </div>
+                            <div class="form-group col-md-2">
+                              <input type="text" class="form-control" name="fans-max" placeholder="max">
+                            </div>
+    
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="submissionBtn">Submit</button>
+                            
+                            <hr class="my-4">
 
-    <!-- Range filters -->
-    <div class="form-group row">
-      <label for="rank_min" class="col-sm-2 col-form-label">Rank</label>
-      <div class="col-sm-10">
-        <input name="minRank" type="text" class="form-control" id="rank_min" placeholder="minimum">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="rank_max" class="col-sm-2 col-form-label"></label>
-      <div class="col-sm-10">
-        <input name="maxRank" type="text" class="form-control" id="rank_max" placeholder="maximum">
-      </div>
-    </div>
-
-    <br>
-    <div class="form-group row">
-      <label for="num_players_min" class="col-sm-2 col-form-label">Number of Players</label>
-      <div class="col-sm-10">
-        <input name="minNumOfPlayers" type="text" class="form-control" id="num_players_min" placeholder="minimum">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="num_players_max" class="col-sm-2 col-form-label"></label>
-      <div class="col-sm-10">
-        <input name="maxNumOfPlayers" type="text" class="form-control" id="num_players_max" placeholder="maximum">
-      </div>
-    </div>
-
-    <br>
-    <div class="form-group row">
-      <label for="year_min" class="col-sm-2 col-form-label">Year Published</label>
-      <div class="col-sm-10">
-        <input name="minYearPublished" type="text" class="form-control" id="year_min" placeholder="minimum">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="year_max" class="col-sm-2 col-form-label"></label>
-      <div class="col-sm-10">
-        <input name="maxYearPublished" type="text" class="form-control" id="year_max" placeholder="maximum">
-      </div>
-    </div>
-
-    <br>
-    <div class="form-group row">
-      <label for="avg_play_time_min" class="col-sm-2 col-form-label">Average Play Time</label>
-      <div class="col-sm-10">
-        <input name="minAvgPlayTime" type="text" class="form-control" id="avg_play_time_min" placeholder="minimum">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="avg_play_time_max" class="col-sm-2 col-form-label"></label>
-      <div class="col-sm-10">
-        <input name="maxAvgPlayTime" type="text" class="form-control" id="avg_play_time_max" placeholder="maximum">
-      </div>
-    </div>
-
-    <br>
-    <div class="form-group row">
-      <label for="min_play_time_min" class="col-sm-2 col-form-label">Minimum Play Time</label>
-      <div class="col-sm-10">
-        <input name="minMinPlayTime" type="text" class="form-control" id="min_play_time_min" placeholder="minimum">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="min_play_time_max" class="col-sm-2 col-form-label"></label>
-      <div class="col-sm-10">
-        <input name="maxMinPlayTime" type="text" class="form-control" id="min_play_time_max" placeholder="maximum">
-      </div>
-    </div>
-
-    <br>
-    <div class="form-group row">
-      <label for="max_play_time_min" class="col-sm-2 col-form-label">Maximum Play Time</label>
-      <div class="col-sm-10">
-        <input name="minMaxPlayTime" type="text" class="form-control" id="max_play_time_min" placeholder="maximum">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="max_play_time_max" class="col-sm-2 col-form-label">Average Play Time</label>
-      <div class="col-sm-10">
-        <input name="maxMaxPlayTime" type="text" class="form-control" id="max_play_time_max" placeholder="minimum">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="num_votes_min" class="col-sm-2 col-form-label"># of Community Votes</label>
-      <div class="col-sm-10">
-        <input name="minVotes" type="text" class="form-control" id="num_votes_min" placeholder="minimum">
-      </div>
-    </div>
-
-    <br>
-    <div class="form-group row">
-      <label for="num_votes_max" class="col-sm-2 col-form-label"></label>
-      <div class="col-sm-10">
-        <input name="maxVotes" type="text" class="form-control" id="num_votes_max" placeholder="maximum">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="age_min" class="col-sm-2 col-form-label">Recommended Age</label>
-      <div class="col-sm-10">
-        <input name="minAge" type="text" class="form-control" id="age_min" placeholder="minimum">
-      </div>
-    </div>
-
-    <br>
-    <div class="form-group row">
-      <label for="age_max" class="col-sm-2 col-form-label"></label>
-      <div class="col-sm-10">
-        <input name="maxAge" type="text" class="form-control" id="age_max" placeholder="maximum">
-      </div>
-    </div>
-
-
-    <div class="form-group row">
-      <label for="fans_min" class="col-sm-2 col-form-label"># of Fans</label>
-      <div class="col-sm-10">
-        <input name="minFans" type="text" class="form-control" id="fans_min" placeholder="minimum">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="fans_max" class="col-sm-2 col-form-label"></label>
-      <div class="col-sm-10">
-        <input name="maxFans" type="text" class="form-control" id="fans_max" placeholder="maximum">
-      </div>
-    </div>
-
-
-<!--      PLACEHOLDER -->
-      <div class="form-group row">
-          <label for="mechanic" class="col-sm-2 col-form-label">Mechanic</label>
-          <div class="col-sm-10">
-              <input name="mechanic" type="text" class="form-control" id="mechanic" placeholder="">
+                </form>
+              </div>
+            </div>
           </div>
+        </div>
       </div>
-
-      <div class="form-group row">
-          <label for="category" class="col-sm-2 col-form-label"></label>
-          <div class="col-sm-10">
-              <input name="category" type="text" class="form-control" id="category" placeholder="">
-          </div>
-      </div>
-
-
-
-<!--    &lt;!&ndash; Mechanics modal button &ndash;&gt;-->
-<!--    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mechanics_modal">-->
-<!--      Mechanics-->
-<!--    </button>-->
-
-<!--    &lt;!&ndash; Mechanics Modal &ndash;&gt;-->
-<!--    <div class="modal fade" id="mechanics_modal" tabindex="-1" role="dialog" aria-labelledby="mechanics_modal_label"-->
-<!--         aria-hidden="true">-->
-<!--      <div class="modal-dialog" role="document">-->
-<!--        <div class="modal-content">-->
-<!--          <div class="modal-header">-->
-<!--            <h5 class="modal-title" id="mechanics_modal_label">Modal title</h5>-->
-<!--            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--              <span aria-hidden="true">&times;</span>-->
-<!--            </button>-->
-<!--          </div>-->
-<!--          <div class="modal-body">-->
-<!--            <ul class="checkbox-grid" id="categories_grid">-->
-<!--            </ul>-->
-<!--          </div>-->
-<!--          <div class="modal-footer">-->
-<!--            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--            <button type="button" class="btn btn-primary">Save changes</button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-
-<!--    &lt;!&ndash; Categories modal button &ndash;&gt;-->
-<!--    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#categories_modal">-->
-<!--      Categories-->
-<!--    </button>-->
-
-<!--    &lt;!&ndash; Categories Modal &ndash;&gt;-->
-<!--    <div class="modal fade" id="categories_modal" tabindex="-1" role="dialog" aria-labelledby="categories_modal_label"-->
-<!--         aria-hidden="true">-->
-<!--      <div class="modal-dialog" role="document">-->
-<!--        <div class="modal-content">-->
-<!--          <div class="modal-header">-->
-<!--            <h5 class="modal-title" id="categories_modal_label">Modal title</h5>-->
-<!--            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--              <span aria-hidden="true">&times;</span>-->
-<!--            </button>-->
-<!--          </div>-->
-<!--          <div class="modal-body">-->
-<!--            <ul class="checkbox-grid" id="mechanics_grid">-->
-<!--            </ul>-->
-<!--          </div>-->
-<!--          <div class="modal-footer">-->
-<!--            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--            <button type="button" class="btn btn-primary">Save changes</button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <div class="form-group row">-->
-<!--      <div class="col-sm-10">-->
-<!--        <button type="submit" class="btn btn-primary">Search!</button>-->
-<!--      </div>-->
-<!--    </div>-->
-
-
-
-  </form>
-
-    <button type="button" class="btn btn-primary" id="submissionBtn">Submit</button>
-</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
