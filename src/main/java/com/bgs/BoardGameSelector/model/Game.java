@@ -9,15 +9,15 @@ import java.util.List;
 @Table(name = "game")
 public class Game {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
-    @Column(name = "rank")
-    private Integer rank;
+    @Column(name = "game_rank")
+    private Integer gameRank;
 
     @Column(name = "bgg_url")
     private String bgg_url;
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "game_id")
     private Integer gameId;
@@ -73,8 +73,8 @@ public class Game {
     @Column(name = "fans")
     private Integer fans;
 
-    @Column(name = "desc")
-    private String desc;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "is_user_made")
     private Boolean is_user_made;
@@ -83,8 +83,8 @@ public class Game {
         return Id;
     }
 
-    public Integer getRank() {
-        return rank;
+    public Integer getGameRank() {
+        return gameRank;
     }
 
     public String getBgg_url() {
@@ -161,8 +161,8 @@ public class Game {
         return fans;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
     public Boolean getIs_user_made() {
@@ -170,8 +170,8 @@ public class Game {
     }
 
 
-    public void setRank(Integer rank) {
-        this.rank = rank;
+    public void setGameRank(Integer gameRank) {
+        this.gameRank = gameRank;
     }
 
     public void setBgg_url(String bgg_url) {
@@ -248,8 +248,8 @@ public class Game {
         this.fans = fans;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setIs_user_made(Boolean is_user_made) {
@@ -257,12 +257,12 @@ public class Game {
     }
 
 
-    public Game(Integer rank, String bggURL, Integer gameId, String name, Integer minPlayers, Integer maxPlayers,
+    public Game(Integer gameRank, String bggURL, Integer gameId, String name, Integer minPlayers, Integer maxPlayers,
                 Integer avgPlayTime, Integer minPlayTime, Integer maxPlayTime, Integer year, Double avgRating,
                 Integer numOfVotes, String imageURL, String thumbnailURL, Integer age, String mechanics,
-                String categories, String designer, String publisher, Integer numOfFans, String desc, Boolean isUserAdded)
+                String categories, String designer, String publisher, Integer numOfFans, String description, Boolean isUserAdded)
     {
-        this.rank = rank;
+        this.gameRank = gameRank;
         this.bgg_url = bggURL;
         this.gameId = gameId;
         this.name = name;
@@ -282,30 +282,31 @@ public class Game {
         this.designer = designer;
         this.publisher = publisher;
         this.fans = numOfFans;
-        this.desc = desc;
+        this.description = description;
         this.is_user_made = isUserAdded;
     }
 
     public Game() {
-        this.rank = 123;
-        this.bgg_url = "123";
-        this.gameId = 123;
-        this.name = "123";
-        this.min_player = 123;
-        this.max_player = 123;
-        this.avg_play_time = 123;
-        this.min_play_time = 123;
-        this.max_play_time = 123;
-        this.year = 123;
-        this.avg_rating = 123.1;
-        this.num_votes = 123;
-        this.img_url = "123";
-        this.thumb_url = "123";
-        this.age = 123;
-        this.publisher = "123";
-        this.fans = 123;
-        this.desc = "123123123123123123123";
-        this.is_user_made = false;
+        this.gameRank = 5001;
+//        this.bgg_url = "";
+//        this.gameId = -1;
+//        this.name = "";
+//        this.min_player = -1;
+//        this.max_player = -1;
+//        this.avg_play_time = -1;
+//        this.min_play_time = -1;
+//        this.max_play_time = -1;
+//        this.year = -1;
+//        this.avg_rating = 0;
+        this.num_votes = 0;
+//        this.img_url = "";
+//        this.thumb_url = "";
+//        this.age = -1;
+//        this.publisher = "";
+//        this.designer = "";
+        this.fans = 0;
+//        this.description = "1";
+        this.is_user_made = true;
     }
 
 }

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/add.css">
+  <title>Add a Game</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col align-self-center">
+        <h1>Add a Game</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10 game-form">
+        <form action="http://localhost:8080/success" method="post">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" class="form-control" placeholder="Game Name">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="designer">Designer</label>
+              <input type="text" name="designer" id="designer" class="form-control" placeholder="Designer">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="publisher">Publisher</label>
+              <input type="text" name="publisher" id="publisher" class="form-control" placeholder="Publisher">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="year">Year</label>
+              <input type="text" name="year" id="year" class="form-control" placeholder="Year Published">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="min-players">Minimum Players</label>
+              <select name="min-players" id="min-players" class="form-control">
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="max-players">Maximum Players</label>
+              <select name="max-players" id="max-players" class="form-control">
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="age">Minimum Age</label>
+              <select name="age" id="age" class="form-control">
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="avg-play-time">Average Play Time</label>
+              <input type="text" name="avg-play-time" id="avg-play-time" class="form-control" placeholder="Minutes">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="min-play-time">Minimum Play Time</label>
+              <input type="text" name="min-play-time" id="min-play-time" class="form-control" placeholder="Minutes">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="max-play-time">Maximum Play Time</label>
+              <input type="text" name="max-play-time" id="max-play-time" class="form-control" placeholder="Minutes">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="desc">Game Description</label>
+            <textarea class="form-control" name="desc" id="desc" rows="3" placeholder="Tell us about the game!"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="img-url">Image URL</label>
+            <input type="text" class="form-control" name="img-url" id="img-url" placeholder="https://example.com/my_image.jpg">
+          </div>
+
+          <div class="form-group">
+            <label for="thumb-url">Thumbnail URL</label>
+            <input type="text" name="thumb-url" class="form-control" id="thumb-url"
+              placeholder="https://example.com/my_thumbnail.jpg">
+          </div>
+
+          <div class="form-group">
+            <label for="bgg-url">BGG URL</label>
+            <input type="text" name="bgg-url" class="form-control" id="bgg-url"
+              placeholder="https://boardgamegeek.com/boardgame/1111/game-name">
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+              <button class="btn btn-success btn-block" id="submitBtn">Submit</button>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+              <button class="btn btn-danger btn-block" id="resetBtn">Reset</button>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+
+
+        </form>
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/add.js"></script>
+</body>
+
+</html>

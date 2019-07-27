@@ -29,7 +29,7 @@ public class PageController {
         return "tester";
     }
 
-    @GetMapping("/{gameId}")
+    @GetMapping("/game/{gameId}")
     public String gamePage(@PathVariable(name = "gameId") int id, Model model)
     {
         Game game = gameDao.findByGameId(id);
@@ -43,12 +43,9 @@ public class PageController {
         return "tester";
     }
 
-    @GetMapping("/resulttoo")
-    public String greetingSubmit(@RequestParam(name="one", required=false, defaultValue="1") String one,
-                                 @RequestParam(name="two", required=false, defaultValue="2") String two,
-                                 @RequestParam(name="three", required=false, defaultValue="3") String three) {
-        return "resulttoo";
+    @GetMapping("/add")
+    public String addGame(Model model) {
+        return "add";
     }
-
 
 }

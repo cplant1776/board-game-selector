@@ -9,6 +9,6 @@ package com.bgs.BoardGameSelector.dao;
 @Transactional
 public interface GameDao extends CrudRepository<Game, Long> {
 
-        public List<Game> findByRank(int rank);
+        public List<Game> findByGameRank(int rank);
         public Game findByGameId(int game_id);
 }

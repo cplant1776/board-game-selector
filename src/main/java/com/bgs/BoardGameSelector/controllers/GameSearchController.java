@@ -57,7 +57,7 @@ public class GameSearchController {
         System.out.println(result.size());
         for (Game game : result) {
             System.out.println(game.getName());
-            System.out.println(game.getRank());
+            System.out.println(game.getGameRank());
         }
 
         return "result";
