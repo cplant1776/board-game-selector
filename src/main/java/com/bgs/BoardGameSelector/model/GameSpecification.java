@@ -23,7 +23,7 @@ public class GameSpecification implements Specification<Game> {
         /* Filter on . . . */
 
         // Rank
-        p.getExpressions().add(cb.between(root.get("rank"), criteria.minRank, criteria.maxRank));
+        p.getExpressions().add(cb.between(root.get("gameRank"), criteria.minRank, criteria.maxRank));
 
         // Number of Players
         p.getExpressions().add(cb.between(root.get("min_player"), criteria.minNumOfPlayers, criteria.maxNumOfPlayers));

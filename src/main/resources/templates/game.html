@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <link rel="stylesheet" type="text/css" href="css/game.css">
+  <link rel="stylesheet" href="css/game.css">
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
@@ -42,7 +42,7 @@
               <h2 class="title-text" th:text="${game.name}"></h2>
             </div>
             <div class="col-md-4">
-              <h2 class=”rank-text“ th:text="'Rank: ' + ${game.rank}"></h2>
+              <h2 class=”rank-text“ th:text="'Rank: ' + ${game.gameRank}"></h2>
             </div>
           </div>
           <div class="row">
@@ -74,18 +74,24 @@
               <p><a th:href=${game.bgg_url} th:text="${game.bgg_url}"></a></p>
             </div>
           </div>
+          <div class="row" th:if="${game.is_user_made == true}">
+            <div class="col-md"></div>
+            <div class="col-md-6">
+              <button class="btn btn-danger btn-block" id="editBtn">EDIT</button>
+            </div>
+            <div class="col-md"></div>
+          </div>
         </div>
       </div>
 
       <!-- Game Description -->
-      <div id=game-description-placeholder></div>
       <br>
       <br>
 
       <div class="row">
         <div class="col-md-12 description-box">
           <h2>Description</h2>
-          <p th:text="${game.desc}"></p>
+          <p th:text="${game.description}"></p>
         </div>
       </div>
 

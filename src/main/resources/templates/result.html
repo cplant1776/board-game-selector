@@ -26,7 +26,7 @@
       <table class="table" id="search-results-table">
 
         <th:block th:each="game, count: ${games}">
-        <tr th:if="${count.index < 5}">
+        <tr class="result-card" th:if="${count.index < 5}" th:data-id="${game.gameId}" onclick="selectGame(this.getAttribute('data-id'))">
           <td>
             <div class="container-fluid result-card">
               <div class="row">
@@ -44,7 +44,7 @@
                        class="img-thumbnail">
                 </div>
                 <div class="col-md-8">
-                  <p th:utext="'Description' + '<br><br>' + ${{#strings.length(game.desc) > 400} ? #strings.substring(game.desc,0,400)+'. . .' : game.desc}">
+                  <p th:utext="'Description' + '<br><br>' + ${{#strings.length(game.description) > 400} ? #strings.substring(game.description,0,400)+'. . .' : game.description}">
 
                   </p>
                 </div>
@@ -53,7 +53,7 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-3">
-                  <p class="rank-text" th:text="'Rank: ' + ${game.rank}">
+                  <p class="rank-text" th:text="'Rank: ' + ${game.gameRank}">
 
                   </p>
                 </div>

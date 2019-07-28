@@ -1,6 +1,9 @@
 package com.bgs.BoardGameSelector.model;
 
+import com.bgs.BoardGameSelector.dao.GameDao;
+import com.bgs.BoardGameSelector.dao.GameSearchDao;
 import com.fasterxml.jackson.annotation.JsonTypeId;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,15 +12,13 @@ import java.util.List;
 @Table(name = "game")
 public class Game {
 
-    private Long Id;
-
     @Column(name = "game_rank")
     private Integer gameRank;
 
     @Column(name = "bgg_url")
     private String bgg_url;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "game_id")
     private Integer gameId;
@@ -78,10 +79,6 @@ public class Game {
 
     @Column(name = "is_user_made")
     private Boolean is_user_made;
-
-    public Long getId() {
-        return Id;
-    }
 
     public Integer getGameRank() {
         return gameRank;
@@ -287,6 +284,7 @@ public class Game {
     }
 
     public Game() {
+
         this.gameRank = 5001;
 //        this.bgg_url = "";
 //        this.gameId = -1;

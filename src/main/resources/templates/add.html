@@ -29,39 +29,42 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="name">Name</label>
-              <input type="text" name="name" id="name" class="form-control" placeholder="Game Name">
+              <input type="text" name="name" id="name" class="form-control" placeholder="Game Name" required>
+              <div class="invalid-feedback">
+                  Please enter a name.
+                </div>
             </div>
             <div class="form-group col-md-6">
               <label for="designer">Designer</label>
-              <input type="text" name="designer" id="designer" class="form-control" placeholder="Designer">
+              <input type="text" name="designer" id="designer" class="form-control" placeholder="Designer" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="publisher">Publisher</label>
-              <input type="text" name="publisher" id="publisher" class="form-control" placeholder="Publisher">
+              <input type="text" name="publisher" id="publisher" class="form-control" placeholder="Publisher" required>
             </div>
             <div class="form-group col-md-6">
               <label for="year">Year</label>
-              <input type="text" name="year" id="year" class="form-control" placeholder="Year Published">
+              <input type="text" name="year" id="year" class="form-control" placeholder="Year Published" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="min-players">Minimum Players</label>
-              <select name="min-players" id="min-players" class="form-control">
+              <select name="min-players" id="min-players" class="form-control" required>
               </select>
             </div>
             <div class="form-group col-md-4">
               <label for="max-players">Maximum Players</label>
-              <select name="max-players" id="max-players" class="form-control">
+              <select name="max-players" id="max-players" class="form-control" required>
               </select>
             </div>
             <div class="form-group col-md-4">
               <label for="age">Minimum Age</label>
-              <select name="age" id="age" class="form-control">
+              <select name="age" id="age" class="form-control" required>
               </select>
             </div>
           </div>
@@ -69,32 +72,31 @@
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="avg-play-time">Average Play Time</label>
-              <input type="text" name="avg-play-time" id="avg-play-time" class="form-control" placeholder="Minutes">
+              <input type="text" name="avg-play-time" id="avg-play-time" class="form-control" placeholder="Minutes" required>
             </div>
             <div class="form-group col-md-4">
               <label for="min-play-time">Minimum Play Time</label>
-              <input type="text" name="min-play-time" id="min-play-time" class="form-control" placeholder="Minutes">
+              <input type="text" name="min-play-time" id="min-play-time" class="form-control" placeholder="Minutes" required>
             </div>
             <div class="form-group col-md-4">
               <label for="max-play-time">Maximum Play Time</label>
-              <input type="text" name="max-play-time" id="max-play-time" class="form-control" placeholder="Minutes">
+              <input type="text" name="max-play-time" id="max-play-time" class="form-control" placeholder="Minutes" required>
             </div>
           </div>
 
           <div class="form-group">
             <label for="desc">Game Description</label>
-            <textarea class="form-control" name="desc" id="desc" rows="3" placeholder="Tell us about the game!"></textarea>
+            <textarea class="form-control" name="desc" id="desc" rows="3" placeholder="Tell us about the game!" required></textarea>
           </div>
 
           <div class="form-group">
             <label for="img-url">Image URL</label>
-            <input type="text" class="form-control" name="img-url" id="img-url" placeholder="https://example.com/my_image.jpg">
+            <input type="text" class="form-control" name="img-url" id="img-url" placeholder="https://example.com/my_image.jpg" required>
           </div>
 
           <div class="form-group">
             <label for="thumb-url">Thumbnail URL</label>
-            <input type="text" name="thumb-url" class="form-control" id="thumb-url"
-              placeholder="https://example.com/my_thumbnail.jpg">
+            <input type="text" name="thumb-url" class="form-control" id="thumb-url" placeholder="https://example.com/my_thumbnail.jpg" required>
           </div>
 
           <div class="form-group">
@@ -104,15 +106,11 @@
           </div>
 
           <div class="form-row">
-            <div class="col-md-2"></div>
+            <div class="col-md"></div>
             <div class="col-md-3">
               <button class="btn btn-success btn-block" id="submitBtn">Submit</button>
             </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-3">
-              <button class="btn btn-danger btn-block" id="resetBtn">Reset</button>
-            </div>
-            <div class="col-md-2"></div>
+            <div class="col-md"></div>
           </div>
 
 

@@ -12,7 +12,6 @@ This project has three (selfish) objectives:
 
 ## Current Roadmap (To-Do)
 
-1. Allow users to add new games
 1. Allow users to edit **added** games
 1. Add user authentication
 1. Restrict users from altering games they did not add

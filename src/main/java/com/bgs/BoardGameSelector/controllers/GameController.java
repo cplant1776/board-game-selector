@@ -35,6 +35,7 @@ public class GameController {
 
         // Instantiate new game
         Game game = new Game();
+        game.setGameId(generateGameId());
         game.setName(name);
         game.setDesigner(designer);
         game.setPublisher(publisher);
@@ -44,7 +45,7 @@ public class GameController {
         game.setAge(age);
         game.setAvg_play_time(avgPlayTime);
         game.setMin_play_time(minPlayTime);
-        game.setMax_player(maxPlayTime);
+        game.setMax_play_time(maxPlayTime);
         game.setDescription(desc);
         game.setImg_url(imgURL);
         game.setThumb_url(thumbURL);
@@ -54,6 +55,11 @@ public class GameController {
         System.out.println("Added game successfully!");
 
         return "success";
+    }
+
+    private int generateGameId() {
+        System.out.println(gameDao.findMaxId() + 1);
+        return gameDao.findMaxId() + 1;
     }
 
 }

@@ -3,7 +3,6 @@ package com.bgs.BoardGameSelector.controllers;
 import com.bgs.BoardGameSelector.dao.GameDao;
 import com.bgs.BoardGameSelector.model.Game;
 import com.bgs.BoardGameSelector.model.GameSearch;
-import com.bgs.BoardGameSelector.model.Greeting;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +28,8 @@ public class PageController {
         return "tester";
     }
 
-    @GetMapping("/game/{gameId}")
+//    @GetMapping("/game/{gameId}")
+    @GetMapping("{gameId}")
     public String gamePage(@PathVariable(name = "gameId") int id, Model model)
     {
         Game game = gameDao.findByGameId(id);
@@ -37,15 +37,10 @@ public class PageController {
         return "game";
     }
 
-    @GetMapping("/tester")
-    public String greetingForm(Model model) {
-        model.addAttribute("greeting", new Greeting());
-        return "tester";
-    }
-
     @GetMapping("/add")
     public String addGame(Model model) {
         return "add";
     }
+
 
 }
