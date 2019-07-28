@@ -29,7 +29,7 @@ public class PageController {
     }
 
 //    @GetMapping("/game/{gameId}")
-    @GetMapping("{gameId}")
+    @GetMapping("/game/{gameId}")
     public String gamePage(@PathVariable(name = "gameId") int id, Model model)
     {
         Game game = gameDao.findByGameId(id);
@@ -40,6 +40,14 @@ public class PageController {
     @GetMapping("/add")
     public String addGame(Model model) {
         return "add";
+    }
+
+    @GetMapping("/edit/{gameId}")
+    public String editPage(@PathVariable(name = "gameId") int id, Model model)
+    {
+        Game game = gameDao.findByGameId(id);
+        model.addAttribute("game", game);
+        return "edit";
     }
 
 

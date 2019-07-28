@@ -1,15 +1,24 @@
-function fillSelectOptionsWithNumberRange(id, start, stop) {
-	var select = $("#" + id).select();
+function fillSelectOptionsWithNumberRange(id, selected, start, stop) {
+  // Select dropdown menu
+  var select = $("#" + id).select();
+  // Fill it in with numbers
 	for (var i=start; i <= stop; i++) {
 		select.append("<option>" + i + "</option>");
-	}
-}
-
-fillSelectOptionsWithNumberRange("min-players", 1, 200)
-fillSelectOptionsWithNumberRange("max-players", 1, 200)
-fillSelectOptionsWithNumberRange("age", 1, 18)
+  }
+  // Set default to game's value
+  select.val(selected);
+};
 
 
+$(document).ready(function() {
+  window.fillSelectOptionsWithNumberRange("min-players", minPlayers, 1, 200)
+  window.fillSelectOptionsWithNumberRange("max-players", maxPlayers, 1, 200)
+  window.fillSelectOptionsWithNumberRange("age", minAge, 1, 18)
+});
+
+
+
+// Form valdation
 (function() {
   'use strict';
   window.addEventListener('load', function() {
