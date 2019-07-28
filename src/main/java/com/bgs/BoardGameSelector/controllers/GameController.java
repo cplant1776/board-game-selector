@@ -98,6 +98,17 @@ public class GameController {
         return "success";
     }
 
+    @DeleteMapping("/success")
+    public String deleteGame(@RequestParam(name = "game-id", required = false) int gameId, Model model) {
+        int deleted = gameDao.deleteByGameId(gameId);
+        if(deleted == 0)
+            System.out.println("Failed to delete game!");
+        else
+            System.out.println("Successfully deleted game!");
+
+        return "success";
+    }
+
     private int generateGameId() {
         System.out.println(gameDao.findMaxId() + 1);
         return gameDao.findMaxId() + 1;

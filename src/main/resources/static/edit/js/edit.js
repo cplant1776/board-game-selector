@@ -11,10 +11,20 @@ function fillSelectOptionsWithNumberRange(id, selected, start, stop) {
 
 
 $(document).ready(function() {
+  // Populate drop-down menus
   window.fillSelectOptionsWithNumberRange("min-players", minPlayers, 1, 200)
   window.fillSelectOptionsWithNumberRange("max-players", maxPlayers, 1, 200)
   window.fillSelectOptionsWithNumberRange("age", minAge, 1, 18)
+
+  // Set DELETE request if delete button pressed
+  $("#confirmDelete").click(function() {
+    $('input[name="_method"]').attr('value', 'delete');
+    $('form').submit();
+  });  
+
 });
+
+
 
 
 

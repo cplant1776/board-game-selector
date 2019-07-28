@@ -15,4 +15,6 @@ public interface GameDao extends CrudRepository<Game, Long> {
 
         @Query(value = "SELECT MAX(game_id) FROM game", nativeQuery = true)
         public Integer findMaxId();
+
+        public Integer deleteByGameId(int game_id);
 }
