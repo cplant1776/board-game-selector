@@ -3,13 +3,13 @@ $("#submissionBtn").click(function()
         // Get form parameters
         values = $("form").serialize();
         // Redirect to url
-        window.location.href = "http://localhost:8080/query?" + values;
+        window.location.href = "/query?" + values;
     }
 );
 
 $("#addBtn").click(function()
     {
-        window.location.href = "http://localhost:8080/add";
+        window.location.href = "/add";
     }
 );
 

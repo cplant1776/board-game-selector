@@ -39,10 +39,19 @@ public class PageController {
         return "edit";
     }
 
-//    @GetMapping("/login")
-//    public String loginPage(Model model) { return "login"; }
+    @GetMapping("/login")
+    public String loginPage(@RequestParam(name = "error", required = false) String error, Model model) {
+        if (error != null)
+            model.addAttribute("error", error);
+        return "login";
+    }
 
     @GetMapping("/logout-success")
     public String logoutPage(Model model) {return "success"; }
+
+    @GetMapping("/new-user")
+    public String newUserPage(Model model) {
+        return "new-user";
+    }
 
 }

@@ -286,24 +286,8 @@ public class Game {
     public Game() {
 
         this.gameRank = 5001;
-//        this.bgg_url = "";
-//        this.gameId = -1;
-//        this.name = "";
-//        this.min_player = -1;
-//        this.max_player = -1;
-//        this.avg_play_time = -1;
-//        this.min_play_time = -1;
-//        this.max_play_time = -1;
-//        this.year = -1;
-//        this.avg_rating = 0;
         this.num_votes = 0;
-//        this.img_url = "";
-//        this.thumb_url = "";
-//        this.age = -1;
-//        this.publisher = "";
-//        this.designer = "";
         this.fans = 0;
-//        this.description = "1";
         this.is_user_made = true;
     }
 

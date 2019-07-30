@@ -1,13 +1,12 @@
 package com.bgs.BoardGameSelector.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
 public class User {
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "id")
     private long id;
@@ -17,6 +16,15 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public User() {
+
+    }
 
     public long getId() {
         return id;
