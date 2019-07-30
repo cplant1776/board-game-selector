@@ -16,17 +16,8 @@ public class PageController {
     private GameDao gameDao;
 
     @GetMapping("/search")
-    public String search(Model model) {
-        String message;
-        message = "this is a message";
-        model.addAttribute("message", message);
-        return "search";
-    }
+    public String search(Model model) { return "search"; }
 
-    @PostMapping("/search")
-    public String searchSubmit(Model model) {
-        return "tester";
-    }
 
 //    @GetMapping("/game/{gameId}")
     @GetMapping("/game/{gameId}")
@@ -38,9 +29,7 @@ public class PageController {
     }
 
     @GetMapping("/add")
-    public String addGame(Model model) {
-        return "add";
-    }
+    public String addGame(Model model) { return "add"; }
 
     @GetMapping("/edit/{gameId}")
     public String editPage(@PathVariable(name = "gameId") int id, Model model)
@@ -50,5 +39,10 @@ public class PageController {
         return "edit";
     }
 
+//    @GetMapping("/login")
+//    public String loginPage(Model model) { return "login"; }
+
+    @GetMapping("/logout-success")
+    public String logoutPage(Model model) {return "success"; }
 
 }

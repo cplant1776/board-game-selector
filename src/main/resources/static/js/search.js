@@ -9,7 +9,7 @@ $("#submissionBtn").click(function()
 
 $("#addBtn").click(function()
     {
-        window.location.href = "http://localhost:8080/add" + values;
+        window.location.href = "http://localhost:8080/add";
     }
 );
 

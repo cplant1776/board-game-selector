@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="css/search.css">
+  
+  <link rel="stylesheet" th:href="@{css/search.css}">
 
   <title>Hello, world!</title>
 </head>
@@ -158,8 +159,8 @@
                             </div>
                           </div>
     
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="submissionBtn">Submit</button>
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="addBtn">Add Game</button>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="return false;" id="submissionBtn">Submit</button>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="return false;" id="addBtn">Add Game</button>
                             <hr class="my-4">
 
                 </form>
