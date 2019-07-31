@@ -1,8 +1,10 @@
 package com.bgs.BoardGameSelector.controllers;
 
 import com.bgs.BoardGameSelector.dao.GameDao;
+import com.bgs.BoardGameSelector.dao.UserDao;
 import com.bgs.BoardGameSelector.model.Game;
 import com.bgs.BoardGameSelector.model.GameSearch;
+import com.bgs.BoardGameSelector.model.User;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +18,9 @@ public class PageController {
 
     @Autowired
     private GameDao gameDao;
+
+    @Autowired
+    private UserDao userDao;
 
     @GetMapping("/search")
     public String search(Model model) { return "search"; }
@@ -79,6 +84,33 @@ public class PageController {
     @GetMapping("/new-user")
     public String newUserPage(Model model) {
         return "new-user";
+    }
+
+    @GetMapping("/account")
+    public String accountRedirect(Model model) {
+        // Get username of logged-in user
+        String username;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+
+        } else {
+            username = principal.toString();
+        }
+
+        User user = userDao.findByUsername(username);
+        long userId = user.getId();
+//        int userId = Math.toIntExact(longId);
+
+
+        return "redirect:" + "/account/" + userId;
+    }
+
+    @GetMapping("/account/{userId}")
+    public String userPage(@PathVariable(name = "userId", required = true) long id, Model model) {
+        User user = userDao.findById(id).get();
+        model.addAttribute(user);
+        return "account";
     }
 
 }

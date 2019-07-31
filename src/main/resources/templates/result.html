@@ -2,91 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <div th:replace="fragments/boilerplate :: head"></div>
   <link rel="stylesheet" href="css/result.css">
 
-  <title>Placeholder</title>
+  <title>Search Results</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
 <body>
 
-
-
+    <div th:replace="fragments/navbar :: navbar"></div>
 
   <div class="container">
       <h1>Search Results</h1>
       <table class="table" id="search-results-table">
 
-        <th:block th:each="game, count: ${games}">
-        <tr class="result-card" th:if="${count.index < 20}" th:data-id="${game.gameId}" onclick="selectGame(this.getAttribute('data-id'))">
-          <td>
-            <div class="container-fluid result-card">
-              <div class="row">
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-8">
-                  <h3 class="text-center" th:text="${game.name}">
+        <div th:replace="fragments/game-results :: game-results"></div>
 
-                  </h3>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4 thumb-img-wrap">
-                  <img alt="game image" th:src="${game.thumb_url}"
-                       class="img-thumbnail">
-                </div>
-                <div class="col-md-8">
-                  <p th:utext="'Description' + '<br><br>' + ${{#strings.length(game.description) > 400} ? #strings.substring(game.description,0,400)+'. . .' : game.description}">
-
-                  </p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-3">
-                  <p class="rank-text" th:text="'Rank: ' + ${game.gameRank}">
-
-                  </p>
-                </div>
-                <div class="col-md-2">
-                </div>
-                <div class="col-md-3">
-                  <p class="votes-text" th:text="'Votes: ' + ${game.num_votes}">
-
-                  </p>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </th:block>
     </table>
   </div>
 
 
-
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS, then Handlebars -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  <script src="js/result.js"></script>
+  <div th:replace="fragments/boilerplate :: js"></div>
+  <script type="text/javascript" src="js/result.js"></script>
 </body>
 
 </html>
