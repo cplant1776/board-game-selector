@@ -80,7 +80,7 @@ public class Game {
     private Boolean is_user_made;
 
     @Column(name = "author_username")
-    private String author_username;
+    private String authorUsername;
 
     public Integer getGameRank() {
         return gameRank;
@@ -255,12 +255,12 @@ public class Game {
         this.is_user_made = is_user_made;
     }
 
-    public String getAuthor_username() {
-        return author_username;
+    public String getAuthorUsername() {
+        return authorUsername;
     }
 
-    public void setAuthor_username(String author_username) {
-        this.author_username = author_username;
+    public void setAuthorUsername(String authorUsername) {
+        this.authorUsername = authorUsername;
     }
 
 

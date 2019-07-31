@@ -4,34 +4,88 @@
 <head>
     <div th:replace="fragments/boilerplate :: head"></div>
     <link rel="stylesheet" th:href="@{~/css/account.css}">
-    <title>Success!</title>
+    <title>My Account</title>
 </head>
 
 <body>
 
-<div th:replace="fragments/navbar :: navbar"></div>
+    <div th:replace="fragments/navbar :: navbar"></div>
 
-<h1>Your Account</h1>
-<div class="container h-100">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="row h-100 justify-content-center align-items-center success-card col-md-8">
-            <form class="col-md-12" action="/search" method="get">
-                <div class="form-group">
-                    <h1>Success!</h1>
+    <div class="container">
+
+    <div th:if="${incorrectUser == false}">
+
+        <div class="row">
+            <div class="col-md"></div>
+            <div class="col-md-8 account-card">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="#">
+                            <img class="img-fluid img-thumbnail rounded" th:src="@{~/images/placeholder-profile.jpg}"
+                                alt="">
+                        </a>
+                    </div>
+                    <div class="col-md-8 d-flex p-2 flex-column align-items-center justify-content-between">
+                        <div class="p-2">
+                            <h3 th:text="${user.username}"></h3>
+                        </div>
+                        <div class="p-2">
+                            <p>Member since: 01/01/2001</p>
+                        </div>
+                        <div class="p-2 align-self-start">
+                            <a class="btn btn-primary" href="#">Change Profile Pic</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group text-center">
-                    <button class="btn btn-primary" id="homeBtn">Return to Home</button>
-                </div>
-            </form>
+            </div>
+            <div class="col-md"></div>
         </div>
+
+        <div>
+            <h2 class="text-center">Your Games</h2>
+        </div>
+
+        <div th:if="${games.isEmpty()}">
+            <div class="row">
+                <div class="col-md"></div>
+                <div class="col-md-8 d-flex p-2 flex-column align-items-center account-card">
+                    <div class="p-2">
+                        <p class="no-game-text">Whoops...looks like you haven't added any games yet.</p>
+                    </div>
+                    <div class="p-2">
+                        <button class="btn btn-success" id="addGameBtn">Add a Game</button>
+                    </div>
+                </div>
+                <div class="col-md"></div>
+            </div>
+        </div>
+
+        <div th:unless="${games.isEmpty()}">
+            <div th:replace="fragments/game-results :: game-results"></div>
+        </div>
+
     </div>
-    <div class="col-md-2"></div>
+
+    <div th:if="${incorrectUser == true}">
+
+            <div class="row">
+                    <div class="col-md"></div>
+                    <div class="col-md-8 d-flex p-2 flex-column align-items-center account-card">
+                        <div class="p-2">
+                            <h2 class="no-game-text">Hmm... you shouldn't be here.</h2>
+                        </div>
+                        <div class="p-2">
+                            <button class="btn btn-danger" id="myActBtn">Go to My Account</button>
+                        </div>
+                    </div>
+                    <div class="col-md"></div>
+                </div>
+
 </div>
 
 
-<div th:replace="fragments/boilerplate :: js"></div>
-<script type="text/javascript" src="js/account.js"></script>
+    <div th:replace="fragments/boilerplate :: js"></div>
+    <script type="text/javascript" th:src="@{~/js/account.js}"></script>
 </body>
 
 </html>

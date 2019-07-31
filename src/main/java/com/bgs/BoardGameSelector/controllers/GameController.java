@@ -61,7 +61,7 @@ public class GameController {
         } else {
             username = principal.toString();
         }
-        game.setAuthor_username(username);
+        game.setAuthorUsername(username);
 
         gameDao.save(game);
         System.out.println("Added game successfully!");

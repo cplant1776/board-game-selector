@@ -14,7 +14,7 @@
 
   <div class="container">
 
-    <div th:if="${game.author_username == username}">
+    <div th:if="${game.authorUsername == username}">
 
       <div class="row">
         <div class="col align-self-center">
@@ -167,7 +167,7 @@
     </div>
 
 
-    <div th:unless="${game.author_username == username}">
+    <div th:unless="${game.authorUsername == username}">
 
       <div class="container h-100">
         <div class="row">

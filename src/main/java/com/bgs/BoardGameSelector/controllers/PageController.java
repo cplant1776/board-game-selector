@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class PageController {
 
@@ -100,16 +102,35 @@ public class PageController {
 
         User user = userDao.findByUsername(username);
         long userId = user.getId();
-//        int userId = Math.toIntExact(longId);
-
 
         return "redirect:" + "/account/" + userId;
     }
 
     @GetMapping("/account/{userId}")
     public String userPage(@PathVariable(name = "userId", required = true) long id, Model model) {
+        // Add user to model
         User user = userDao.findById(id).get();
-        model.addAttribute(user);
+        model.addAttribute("user", user);
+        // Add user's games to model
+        List<Game> games = gameDao.findByAuthorUsername(user.getUsername());
+        model.addAttribute("games", games);
+
+        // Check to make sure user is authorized
+        String username;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+
+        } else {
+            username = principal.toString();
+        }
+
+        User attemptedUser = userDao.findByUsername(username);
+        if (attemptedUser.getId() != user.getId())
+            model.addAttribute("incorrectUser", true);
+        else
+            model.addAttribute("incorrectUser", false);
+
         return "account";
     }
 

@@ -17,4 +17,6 @@ public interface GameDao extends CrudRepository<Game, Long> {
         public Integer findMaxId();
 
         public Integer deleteByGameId(int game_id);
+
+        public List<Game> findByAuthorUsername(String authorUsername);
 }
