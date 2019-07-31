@@ -74,7 +74,7 @@
               <p><a th:href=${game.bgg_url} th:text="${game.bgg_url}"></a></p>
             </div>
           </div>
-          <div class="row" th:if="${game.is_user_made == true}">
+          <div class="row" th:if="${game.author_username == username}">
             <div class="col-md"></div>
             <div class="col-md-6">
               <button class="btn btn-danger btn-block" id="editBtn" th:data-id="${game.gameId}" onclick="location.href='/edit/' + this.getAttribute('data-id')">EDIT</button>

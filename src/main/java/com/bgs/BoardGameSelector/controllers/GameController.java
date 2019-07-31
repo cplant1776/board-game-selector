@@ -4,6 +4,8 @@ import com.bgs.BoardGameSelector.model.Game;
 import com.bgs.BoardGameSelector.dao.GameDao;
 import com.bgs.BoardGameSelector.model.GameSearch;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -50,6 +52,16 @@ public class GameController {
         game.setImg_url(imgURL);
         game.setThumb_url(thumbURL);
         game.setBgg_url(bggURL);
+
+        String username;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+
+        } else {
+            username = principal.toString();
+        }
+        game.setAuthor_username(username);
 
         gameDao.save(game);
         System.out.println("Added game successfully!");

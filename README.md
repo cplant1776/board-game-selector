@@ -12,7 +12,7 @@ This project has three (selfish) objectives:
 
 ## Current Roadmap (To-Do)
 
-1. Restrict users from altering games they did not add
-1. Allow users to leave comments and add their rating to Games
+
+1. Allow users to add comments on games
 1. Add mechanics/category tags
 1. Make it pretty

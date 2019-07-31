@@ -18,7 +18,6 @@ public class Game {
     @Column(name = "bgg_url")
     private String bgg_url;
 
-//    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "game_id")
     private Integer gameId;
@@ -79,6 +78,9 @@ public class Game {
 
     @Column(name = "is_user_made")
     private Boolean is_user_made;
+
+    @Column(name = "author_username")
+    private String author_username;
 
     public Integer getGameRank() {
         return gameRank;
@@ -253,6 +255,14 @@ public class Game {
         this.is_user_made = is_user_made;
     }
 
+    public String getAuthor_username() {
+        return author_username;
+    }
+
+    public void setAuthor_username(String author_username) {
+        this.author_username = author_username;
+    }
+
 
     public Game(Integer gameRank, String bggURL, Integer gameId, String name, Integer minPlayers, Integer maxPlayers,
                 Integer avgPlayTime, Integer minPlayTime, Integer maxPlayTime, Integer year, Double avgRating,
@@ -290,5 +300,6 @@ public class Game {
         this.fans = 0;
         this.is_user_made = true;
     }
+
 
 }
