@@ -1,10 +1,9 @@
 package com.bgs.BoardGameSelector.controllers;
 
+import com.bgs.BoardGameSelector.dao.CommentDao;
 import com.bgs.BoardGameSelector.dao.GameDao;
 import com.bgs.BoardGameSelector.dao.UserDao;
-import com.bgs.BoardGameSelector.model.Game;
-import com.bgs.BoardGameSelector.model.GameSearch;
-import com.bgs.BoardGameSelector.model.User;
+import com.bgs.BoardGameSelector.model.*;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -24,6 +24,9 @@ public class PageController {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private CommentDao commentDao;
+
     @GetMapping("/search")
     public String search(Model model) { return "search"; }
 
@@ -34,18 +37,25 @@ public class PageController {
     {
         // Fetch game from DB
         Game game = gameDao.findByGameId(id);
-        model.addAttribute("game", game);
-
-        // Get username of logged-in user
-        String username;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
-
-        } else {
-            username = principal.toString();
+        // Fetch comments on this game along with their creator's username
+        ArrayList<Object[]> commentedUsers = userDao.joinUsersWithComment(id);
+        ArrayList<CommentDisplay> comments = new ArrayList<>();
+        // Create comment display objects from joined list
+        if (commentedUsers == null)
+            comments = null;
+        else {
+            for (Object[] cd : commentedUsers) {
+                CommentDisplay newComment = new CommentDisplay(
+                        (Integer) cd[0], (Integer) cd[1], (String) cd[2], (Integer) cd[3], (String) cd[4], (String) cd[5]);
+                comments.add(newComment);
+            }
         }
-        model.addAttribute("username", username);
+
+        // Add objects to model
+        model.addAttribute("game", game);
+        model.addAttribute("comments", comments);
+        model.addAttribute("username", getLoggedInUsername());
+        model.addAttribute("avatar", getLoggedInAvatar());
 
         return "game";
     }
@@ -56,20 +66,13 @@ public class PageController {
     @GetMapping("/edit/{gameId}")
     public String editPage(@PathVariable(name = "gameId") int id, Model model)
     {
-        // Fetch game from DN
+        // Fetch game from DB
         Game game = gameDao.findByGameId(id);
+
+        // Add objects to model
         model.addAttribute("game", game);
+        model.addAttribute("username", getLoggedInUsername());
 
-        // Get username of logged-in user
-        String username;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
-
-        } else {
-            username = principal.toString();
-        }
-        model.addAttribute("username", username);
         return "edit";
     }
 
@@ -77,6 +80,7 @@ public class PageController {
     public String loginPage(@RequestParam(name = "error", required = false) String error, Model model) {
         if (error != null)
             model.addAttribute("error", error);
+
         return "login";
     }
 
@@ -90,17 +94,8 @@ public class PageController {
 
     @GetMapping("/account")
     public String accountRedirect(Model model) {
-        // Get username of logged-in user
-        String username;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
-
-        } else {
-            username = principal.toString();
-        }
-
-        User user = userDao.findByUsername(username);
+        // Get logged-in userId
+        User user = userDao.findByUsername(getLoggedInUsername());
         long userId = user.getId();
 
         return "redirect:" + "/account/" + userId;
@@ -115,7 +110,18 @@ public class PageController {
         List<Game> games = gameDao.findByAuthorUsername(user.getUsername());
         model.addAttribute("games", games);
 
-        // Check to make sure user is authorized
+        // Check if logged-in user is authorized for this page
+        User attemptedUser = userDao.findByUsername(getLoggedInUsername());
+        if (attemptedUser.getId() != user.getId())
+            model.addAttribute("incorrectUser", true);
+        else
+            model.addAttribute("incorrectUser", false);
+
+        return "account";
+    }
+
+    private String getLoggedInUsername() {
+        // Get username of logged-in user
         String username;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
@@ -125,13 +131,15 @@ public class PageController {
             username = principal.toString();
         }
 
-        User attemptedUser = userDao.findByUsername(username);
-        if (attemptedUser.getId() != user.getId())
-            model.addAttribute("incorrectUser", true);
-        else
-            model.addAttribute("incorrectUser", false);
+        return username;
+    }
 
-        return "account";
+    private String getLoggedInAvatar() {
+        String username = getLoggedInUsername();
+        if (username.equals("anonymousUser"))
+            return "";
+        User user = userDao.findByUsername(username);
+        return user.getAvatar();
     }
 
 }

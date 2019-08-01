@@ -27,6 +27,7 @@ h3 {
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
     background: white;
     padding: 10px 10px 10px 10px;
+    margin: 50px;
 }
 
 .thumb-img-wrap {
@@ -47,5 +48,12 @@ h3 {
 
 .description-box {
     padding-top: 10px;
-    border-top: 2px solid black;
+}
+
+.profile-pic {
+    max-height: 100px;
+}
+
+.media {
+    margin-top: 10px;
 }
