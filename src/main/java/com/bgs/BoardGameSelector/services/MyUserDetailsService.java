@@ -1,6 +1,8 @@
-package com.bgs.BoardGameSelector.model;
+package com.bgs.BoardGameSelector.services;
 
 import com.bgs.BoardGameSelector.dao.UserDao;
+import com.bgs.BoardGameSelector.model.User;
+import com.bgs.BoardGameSelector.model.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

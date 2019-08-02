@@ -13,5 +13,4 @@ public class BoardGameSelectorApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BoardGameSelectorApplication.class, args);
 	}
-
 }

@@ -2,7 +2,6 @@ package com.bgs.BoardGameSelector.controllers;
 
 import com.bgs.BoardGameSelector.model.Game;
 import com.bgs.BoardGameSelector.dao.GameDao;
-import com.bgs.BoardGameSelector.model.GameSearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,15 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 public class GameController {
 
     @Autowired
     private GameDao gameDao;
 
-    @PostMapping("/success")
+    @PostMapping("/game/success")
     public String addGame( @RequestParam(name="name", required=false, defaultValue="0") String name,
                            @RequestParam(name="designer", required=false, defaultValue="0") String designer,
                            @RequestParam(name="publisher", required=false, defaultValue="0") String publisher,
@@ -69,7 +66,7 @@ public class GameController {
         return "success";
     }
 
-    @PutMapping("/success")
+    @PutMapping("/game/success")
     public String updateGame( @RequestParam(name="name", required=false, defaultValue="0") String name,
                            @RequestParam(name="designer", required=false, defaultValue="0") String designer,
                            @RequestParam(name="publisher", required=false, defaultValue="0") String publisher,
@@ -110,7 +107,7 @@ public class GameController {
         return "success";
     }
 
-    @DeleteMapping("/success")
+    @DeleteMapping("/game/success")
     public String deleteGame(@RequestParam(name = "game-id", required = false) int gameId, Model model) {
         int deleted = gameDao.deleteByGameId(gameId);
         if(deleted == 0)

@@ -1,7 +1,7 @@
-package com.bgs.BoardGameSelector.model;
+package com.bgs.BoardGameSelector.services;
 import java.util.List;
 
-public class GameSearch {
+public class GameSearchService {
     public int minRank;
     public int maxRank;
     public int minNumOfPlayers;
@@ -23,10 +23,10 @@ public class GameSearch {
     public String mechanic;
     public String category;
 
-    public GameSearch(int minRank, int maxRank, int minNumOfPlayers, int maxNumOfPlayers, int minYearPublished,
-                      int maxYearPublished, int minAvgPlayTime, int maxAvgPlayTime, int minMinPlayTime,
-                      int maxMinPlayTime, int minMaxPlayTime, int maxMaxPlayTime, int minVotes, int maxVotes,
-                      int minAge, int maxAge, int minFans, int maxFans, String mechanic, String category)
+    public GameSearchService(int minRank, int maxRank, int minNumOfPlayers, int maxNumOfPlayers, int minYearPublished,
+                             int maxYearPublished, int minAvgPlayTime, int maxAvgPlayTime, int minMinPlayTime,
+                             int maxMinPlayTime, int minMaxPlayTime, int maxMaxPlayTime, int minVotes, int maxVotes,
+                             int minAge, int maxAge, int minFans, int maxFans, String mechanic, String category)
     {
         this.minRank = minRank;
         this.maxRank = maxRank;
@@ -50,7 +50,7 @@ public class GameSearch {
         this.category = category;
     }
 
-    public GameSearch() {
+    public GameSearchService() {
         this.minRank = 0;
         this.maxRank = 0;
         this.minNumOfPlayers = 0;

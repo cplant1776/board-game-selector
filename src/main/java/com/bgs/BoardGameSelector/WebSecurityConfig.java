@@ -2,6 +2,7 @@ package com.bgs.BoardGameSelector;
 
 import com.mysql.cj.protocol.AuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -17,6 +18,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.util.AntPathMatcher;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers("/css/**", "/js/**", "/images/**", "/fragments/**",
-                            "/game/**", "/login", "/search", "/success", "/query", "/new-user").permitAll()
+                            "/game/**", "/login", "/search", "/query", "/new-user", "/", "/upload/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()

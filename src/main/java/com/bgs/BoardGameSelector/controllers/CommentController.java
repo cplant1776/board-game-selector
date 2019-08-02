@@ -34,11 +34,9 @@ public class CommentController {
             Comment comment = new Comment(gameId, loggedInUser.getId(), content);
             commentDao.save(comment);
             System.out.println("Added comment successfully!");
-
-            return "success";
         }
 
-        return "success";
+        return "redirect:" + "/game/" + gameId;
 
     }
 

@@ -1,6 +1,6 @@
-package com.bgs.BoardGameSelector.model;
+package com.bgs.BoardGameSelector.services;
 
-public class CommentDisplay {
+public class CommentDisplayService {
 
     public Integer commentId;
     public Integer userId;
@@ -9,7 +9,7 @@ public class CommentDisplay {
     public String username;
     public String avatar;
 
-    public CommentDisplay(Integer commentId, Integer userId, String content, Integer replyTo, String username, String avatar) {
+    public CommentDisplayService(Integer commentId, Integer userId, String content, Integer replyTo, String username, String avatar) {
         this.commentId = commentId;
         this.userId = userId;
         this.content = content;

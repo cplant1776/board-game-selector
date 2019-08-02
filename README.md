@@ -12,6 +12,5 @@ This project has three (selfish) objectives:
 
 ## Current Roadmap (To-Do)
 
-1. Allow users to add comments on games
 1. Add mechanics/category tags
 1. Make it pretty

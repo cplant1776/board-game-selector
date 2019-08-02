@@ -1,5 +1,7 @@
-package com.bgs.BoardGameSelector.model;
+package com.bgs.BoardGameSelector.services;
 
+import com.bgs.BoardGameSelector.model.Game;
+import com.bgs.BoardGameSelector.services.GameSearchService;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -8,11 +10,11 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 
-public class GameSpecification implements Specification<Game> {
+public class GameSpecificationService implements Specification<Game> {
 
-    private GameSearch criteria;
+    private GameSearchService criteria;
 
-    public GameSpecification(GameSearch gs) {
+    public GameSpecificationService(GameSearchService gs) {
         criteria = gs;
     }
 

@@ -2,10 +2,9 @@ package com.bgs.BoardGameSelector.controllers;
 
 import com.bgs.BoardGameSelector.dao.GameSearchDao;
 import com.bgs.BoardGameSelector.model.Game;
-import com.bgs.BoardGameSelector.model.GameSearch;
-import com.bgs.BoardGameSelector.model.GameSpecification;
+import com.bgs.BoardGameSelector.services.GameSearchService;
+import com.bgs.BoardGameSelector.services.GameSpecificationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -41,13 +40,13 @@ public class GameSearchController {
                              Model model) {
 
         // Instantiate search criteria
-        GameSearch gameSearch = new GameSearch(minRank, maxRank, minNumOfPlayers, maxNumOfPlayers,
+        GameSearchService gameSearchService = new GameSearchService(minRank, maxRank, minNumOfPlayers, maxNumOfPlayers,
         minYearPublished, maxYearPublished, minAvgPlayTime, maxAvgPlayTime, minMinPlayTime,
         maxMinPlayTime,  minMaxPlayTime,  maxMaxPlayTime,  minVotes,  maxVotes,
          minAge, maxAge, minFans, maxFans, mechanic, category);
 
         // Generate list of Games from query result
-        GameSpecification spec = new GameSpecification(gameSearch);
+        GameSpecificationService spec = new GameSpecificationService(gameSearchService);
         List<Game> result = gameSearchDao.findAll(spec);
 
         // Agge results to search result page

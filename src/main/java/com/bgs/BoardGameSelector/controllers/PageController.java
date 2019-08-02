@@ -4,8 +4,9 @@ import com.bgs.BoardGameSelector.dao.CommentDao;
 import com.bgs.BoardGameSelector.dao.GameDao;
 import com.bgs.BoardGameSelector.dao.UserDao;
 import com.bgs.BoardGameSelector.model.*;
-import org.dom4j.rule.Mode;
+import com.bgs.BoardGameSelector.services.CommentDisplayService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -41,13 +42,13 @@ public class PageController {
         Game game = gameDao.findByGameId(id);
         // Fetch comments on this game along with their creator's username
         ArrayList<Object[]> commentedUsers = userDao.joinUsersWithComment(id);
-        ArrayList<CommentDisplay> comments = new ArrayList<>();
+        ArrayList<CommentDisplayService> comments = new ArrayList<>();
         // Create comment display objects from joined list
         if (commentedUsers.isEmpty())
             comments = null;
         else {
             for (Object[] cd : commentedUsers) {
-                CommentDisplay newComment = new CommentDisplay(
+                CommentDisplayService newComment = new CommentDisplayService(
                         (Integer) cd[0], (Integer) cd[1], (String) cd[2], (Integer) cd[3], (String) cd[4], (String) cd[5]);
                 comments.add(newComment);
             }

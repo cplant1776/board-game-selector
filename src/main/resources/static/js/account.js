@@ -5,3 +5,7 @@ $("#myActBtn").click(function() {
 $("#addGameBtn").click(function() {
     window.location.href = "/add";
 });
+
+function selectGame(id) {
+    document.location.href = "/game/" + id;
+ };
