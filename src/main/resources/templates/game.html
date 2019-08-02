@@ -99,7 +99,9 @@
           <h2>Comments</h2>
         </div>
       </div>
+
       <th:block th:if="${comments != null}">
+
         <th:block th:each="comment, count: ${comments}">
           <div class="media">
             <img class="align-self-start mr-3 profile-pic" th:src="@{${comment.avatar}}"
@@ -111,15 +113,33 @@
           </div>
         </th:block>
 
-        <button class="btn btn-success commentBtn">Comment</button>
+        <div th:if="${username != 'anonymousUser'}">
+          <div class="d-flex justify-content-center align-items-center flex-column">
+            <button class="btn btn-success commentBtn">Comment</button>
+          </div>
+        </div>
+
       </th:block>
 
-      <div th:if="${comments == null}">
+      <div th:if="${comments == null AND username != 'anonymousUser'}">
         <div class="d-flex flex-column align-items-center justify-content-between">
           <p>Hmm... looks like there's no comments here.</p>
           <button class="btn btn-success commentBtn">Be the first!</button>
         </div>
       </div>
+
+      <div th:if="${comments == null AND username == 'anonymousUser'}">
+          <div class="d-flex justify-content-center align-items-center flex-column">
+            <form action="/login" method="get">
+              <div class="form-group">
+                <h3>Log in to leave a comment.</h3>
+                <div class="form-group">
+                  <div class="d-flex d-flex justify-content-center align-items-center flex-column">
+                    <button class="btn btn-success commentBtn">Log in</button>
+                  </div>
+                </div>
+            </form>
+          </div>
 
     </div>
 
@@ -127,21 +147,26 @@
   </div>
 
   <div hidden>
-      <div th:if="${username != anonymousUser}" class="new-comment">
-          <div class="media">
-              <img class="align-self-start mr-3 profile-pic" th:src="@{${avatar}}"
-                alt="Generic placeholder image">
-              <div class="media-body">
-                <h5 class="mt-0" th:text="${username}"></h5>
-                <textarea class="w-100" type="textarea" rows=3 placeholder="Comment . . ."></textarea>
-                
+    <div th:if="${username != 'anonymousUser'}" class="new-comment">
+      <div class="media">
+        <img class="align-self-start mr-3 profile-pic" th:src="@{${avatar}}" alt="Generic placeholder image">
+        <div class="media-body">
+          <h5 class="mt-0" th:text="${username}"></h5>
+          <form th:action="|${game.gameId}|" th:method="post">
+            <div class="form-row">
+              <textarea name="content" class="w-100 form-control" type="textarea" rows=3
+                placeholder="Comment . . ."></textarea>
+            </div>
+            <div class="form-row">
+              <div class="d-flex flex-row-reverse">
+                <button class="btn btn-success submitComment">Submit</button>
               </div>
             </div>
-            <div class="d-flex flex-row-reverse">
-                <button class="btn btn-success submitComment">Submit</button>
-            </div>
-            
+          </form>
+        </div>
       </div>
+
+    </div>
   </div>
 
 

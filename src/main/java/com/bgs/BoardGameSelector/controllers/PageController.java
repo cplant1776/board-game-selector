@@ -30,8 +30,10 @@ public class PageController {
     @GetMapping("/search")
     public String search(Model model) { return "search"; }
 
+    @GetMapping("/")
+    public String home(Model model) { return "search"; }
 
-//    @GetMapping("/game/{gameId}")
+
     @GetMapping("/game/{gameId}")
     public String gamePage(@PathVariable(name = "gameId") int id, Model model)
     {
@@ -41,7 +43,7 @@ public class PageController {
         ArrayList<Object[]> commentedUsers = userDao.joinUsersWithComment(id);
         ArrayList<CommentDisplay> comments = new ArrayList<>();
         // Create comment display objects from joined list
-        if (commentedUsers == null)
+        if (commentedUsers.isEmpty())
             comments = null;
         else {
             for (Object[] cd : commentedUsers) {

@@ -28,6 +28,12 @@ public class Comment {
 
     }
 
+    public Comment(int gameId, long userId, String content) {
+        this.gameId = gameId;
+        this.userId = userId;
+        this.content = content;
+    }
+
     public long getId() {
         return id;
     }
