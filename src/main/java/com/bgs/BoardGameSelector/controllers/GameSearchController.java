@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -37,6 +39,7 @@ public class GameSearchController {
                             @RequestParam(name="fansMax", required = false, defaultValue = "999999") int maxFans,
                             @RequestParam(name="mechanic", required = false, defaultValue = "") String mechanic,
                             @RequestParam(name="category", required = false, defaultValue = "") String category,
+                            @RequestParam(name="sort", required=false, defaultValue="gameRank") String sortBy,
                              Model model) {
 
         // Instantiate search criteria
@@ -49,7 +52,11 @@ public class GameSearchController {
         GameSpecificationService spec = new GameSpecificationService(gameSearchService);
         List<Game> result = gameSearchDao.findAll(spec);
 
-        // Agge results to search result page
+        // Sort game list
+        if(sortBy != null)
+            sortGameList(result, sortBy);
+
+        // Add results to search result page
         model.addAttribute("games", result);
 
         // Debug purposes
@@ -60,5 +67,36 @@ public class GameSearchController {
         }
 
         return "result";
+    }
+
+    private void sortGameList(List<Game> games, String sortBy) {
+        switch(sortBy) {
+            case "gameRank":
+                games.sort(new Comparator<Game>() {
+                    @Override
+                    public int compare(Game g1, Game g2) {
+                        return g1.getGameRank().compareTo(g2.getGameRank());
+                    }
+                });
+                break;
+
+            case "name":
+                games.sort(new Comparator<Game>() {
+                    @Override
+                    public int compare(Game g1, Game g2) {
+                        return g1.getName().compareTo(g2.getName());
+                    }
+                });
+                break;
+
+            case "votes":
+                games.sort(new Comparator<Game>() {
+                    @Override
+                    public int compare(Game g1, Game g2) {
+                        return g2.getNum_votes().compareTo(g1.getNum_votes());
+                    }
+                });
+                break;
+        }
     }
 }
