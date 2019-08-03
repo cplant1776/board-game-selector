@@ -4,171 +4,273 @@
 <head>
 
   <div th:replace="fragments/boilerplate :: head"></div>
-  
+
   <link rel="stylesheet" th:href="@{css/search.css}">
+  <link rel="stylesheet" th:href="@{css/nouislider.min.css}">
 
   <title>Search for Games</title>
 </head>
 
 <body>
 
-    <div th:replace="fragments/navbar :: navbar"></div>
+  <div th:replace="fragments/navbar :: navbar"></div>
 
-    <div class="container">
-        <div class="row">
-          <div class="col-sm-9 col-md-7 col-lg-10 mx-auto">
-            <div class="card card-signin my-5">
-              <div class="card-body">
-                <h5 class="card-title text-center">Filters</h5>
-                <form class="form-signin"  action="/query" method="get">
-    
-                  <!-- Rank -->
-                  <div class="form-row">
-                    <div class="form-group col-md-2">
-                      <span class="filter-text">Rank</span>
-                    </div>
-                    <div class="form-group col-md-1">
-                      <input type="text" class="form-control" name="rank-min" placeholder="min">
-                    </div>
-                    <div class="form-group col-md-2">
-                      <p class="filter-text">to</p>
-                    </div>
-                    <div class="form-group col-md-1">
-                      <input type="text" class="form-control" name="rank-max" placeholder="max">
-                    </div>
-    
-                    <!-- # of Players -->
-                    <div class="form-group col-md-2">
-                      <p class="filter-text"># of Players</p>
-                    </div>
-                    <div class="form-group col-md-1">
-                      <input type="text" class="form-control" name="num-of-players-min" placeholder="min">
-                    </div>
-                    <div class="form-group col-md-2">
-                      <p class="filter-text">to</p>
-                    </div>
-                    <div class="form-group col-md-1">
-                      <input type="text" class="form-control" name="num-of-players-max" placeholder="max">
-                    </div>
-    
-                    <!-- Year -->
-    
-                    <div class="form-row">
-                      <div class="form-group col-md-2">
-                        <span class="filter-text">Year</span>
-                      </div>
-                      <div class="form-group col-md-1">
-                        <input type="text" class="form-control" name="year-min" placeholder="min">
-                      </div>
-                      <div class="form-group col-md-2">
-                        <p class="filter-text">to</p>
-                      </div>
-                      <div class="form-group col-md-1">
-                        <input type="text" class="form-control" name="year-max" placeholder="max">
-                      </div>
-    
-                      
-                      <!-- Avg Play Time -->
-                      <div class="form-group col-md-2">
-                        <p class="filter-text">Avg Play Tim</p>
-                      </div>
-                      <div class="form-group col-md-1">
-                        <input type="text" class="form-control" name="avg-play-time-min" placeholder="min">
-                      </div>
-                      <div class="form-group col-md-2">
-                        <p class="filter-text">to</p>
-                      </div>
-                      <div class="form-group col-md-1">
-                        <input type="text" class="form-control" name="avg-play-time-max" placeholder="max">
-                      </div>
-    
-                      <!-- Min Play Time -->
-                      <div class="form-row">
-                        <div class="form-group col-md-2">
-                          <span class="filter-text">Min Play Time</span>
-                        </div>
-                        <div class="form-group col-md-1">
-                          <input type="text" class="form-control" name="min-play-time-min" placeholder="min">
-                        </div>
-                        <div class="form-group col-md-2">
-                          <p class="filter-text">to</p>
-                        </div>
-                        <div class="form-group col-md-1">
-                          <input type="text" class="form-control" name="min-play-time-max" placeholder="max">
-                        </div>
-    
-                        <!-- Max Play Time -->
-                        <div class="form-group col-md-2">
-                          <p class="filter-text">Max Play Time</p>
-                        </div>
-                        <div class="form-group col-md-1">
-                          <input type="text" class="form-control" name="max-play-time-min" placeholder="min">
-                        </div>
-                        <div class="form-group col-md-2">
-                          <p class="filter-text">to</p>
-                        </div>
-                        <div class="form-group col-md-1">
-                          <input type="text" class="form-control" name="max-play-time-max" placeholder="max">
-                        </div>
-    
-                        <!-- Votes -->
-                        <div class="form-row">
-                          <div class="form-group col-md-2">
-                            <span class="filter-text"># of Votes</span>
-                          </div>
-                          <div class="form-group col-md-1">
-                            <input type="text" class="form-control" name="votes-min" placeholder="min">
-                          </div>
-                          <div class="form-group col-md-2">
-                            <p class="filter-text">to</p>
-                          </div>
-                          <div class="form-group col-md-1">
-                            <input type="text" class="form-control" name="votes-max" placeholder="max">
-                          </div>
-    
-                          <!-- Recommended Age -->
-                          <div class="form-group col-md-2">
-                            <p class="filter-text">Rec. Age</p>
-                          </div>
-                          <div class="form-group col-md-1">
-                            <input type="text" class="form-control" name="age-min" placeholder="min">
-                          </div>
-                          <div class="form-group col-md-2">
-                            <p class="filter-text">to</p>
-                          </div>
-                          <div class="form-group col-md-1">
-                            <input type="text" class="form-control" name="age-max" placeholder="max">
-                          </div>
-                          <!-- # of Fans -->
-                          <div class="form-row">
-                            <div class="form-group col-md-4">
-                              <span class="filter-text"># of Fans</span>
-                            </div>
-                            <div class="form-group col-md-2">
-                              <input type="text" class="form-control" name="fans-min" placeholder="min">
-                            </div>
-                            <div class="form-group col-md-4">
-                              <p class="filter-text">to</p>
-                            </div>
-                            <div class="form-group col-md-2">
-                              <input type="text" class="form-control" name="fans-max" placeholder="max">
-                            </div>
-                          </div>
-    
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="return false;" id="submissionBtn">Submit</button>
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="return false;" id="addBtn">Add Game</button>
-                            <hr class="my-4">
+  <div class="container align-items-center">
 
-                </form>
-              </div>
+    <!-- <div id="html5">
+
+        </div>
+        <select id="input-select"></select>
+
+        <input type="text" id="input-number"> -->
+    <!-- <div class="row">
+      <div class="col-md-2">
+        <input type="text" id="input-select">
+      </div>
+      <div class="col-md-8" id="html5">
+
+      </div>
+      <div class="col-md-2">
+        <input type="text" id="input-number">
+      </div> -->
+
+
+    <div class="row">
+      <div class="col-md-1"></div>
+
+      <div class="row display-card col-md-10">
+        <div class="col-sm-9 col-md-7 col-lg-10 mx-auto">
+          <div class="card card-signin my-5">
+            <div class="card-body">
+              <form class="form-signin" action="/query" method="get">
+
+                <!-- Rank -->
+                <h5 class="card-title text-center">Rank</h5>
+                <div class="form-row slider-row">
+                  <div class="col-md"></div>
+                  <div class="col-md-8">
+                    <div class="my-slider" id="rankSlider"></div>
+                  </div>
+                  <div class="col-md"></div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="rankMin" type="text" id="rankMin">
+                  </div>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="rankMax" type="text" id="rankMax">
+                  </div>
+                  <div class="col-md-2"></div>
+                </div>
+
+                <!-- # of Players -->
+                <h5 class="card-title text-center">Num of Players</h5>
+                <div class="form-row slider-row">
+                  <div class="col-md"></div>
+                  <div class="col-md-8">
+                    <div class="my-slider" id="playersSlider"></div>
+                  </div>
+                  <div class="col-md"></div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="playersMin" type="text" id="playersMin">
+                  </div>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="playersMax" type="text" id="playersMax">
+                  </div>
+                  <div class="col-md-2"></div>
+                </div>
+
+                <!-- Year -->
+                <h5 class="card-title text-center">Year Published</h5>
+                <div class="form-row slider-row">
+                  <div class="col-md"></div>
+                  <div class="col-md-8">
+                    <div class="my-slider" id="yearSlider"></div>
+                  </div>
+                  <div class="col-md"></div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="yearMin" type="text" id="yearMin">
+                  </div>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="yearMax" type="text" id="yearMax">
+                  </div>
+                  <div class="col-md-2"></div>
+                </div>
+
+                <!-- Average Play Time -->
+                <h5 class="card-title text-center">Avg Play Time (mins)</h5>
+                <div class="form-row slider-row">
+                  <div class="col-md"></div>
+                  <div class="col-md-8">
+                    <div class="my-slider" id="avgPlayTimeSlider"></div>
+                  </div>
+                  <div class="col-md"></div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="avgPlayTimeMin" type="text" id="avgPlayTimeMin">
+                  </div>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="avgPlayTimeMax" type="text" id="avgPlayTimeMax">
+                  </div>
+                  <div class="col-md-2"></div>
+                </div>
+
+                <!-- Minimum Play Time -->
+                <h5 class="card-title text-center">Min Play Time (mins)</h5>
+                <div class="form-row slider-row">
+                  <div class="col-md"></div>
+                  <div class="col-md-8">
+                    <div class="my-slider" id="minPlayTimeSlider"></div>
+                  </div>
+                  <div class="col-md"></div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="minPlayTimeMin" type="text" id="minPlayTimeMin">
+                  </div>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="minPlayTimeMax" type="text" id="minPlayTimeMax">
+                  </div>
+                  <div class="col-md-2"></div>
+                </div>
+
+                <!-- Maximum Play Time -->
+                <h5 class="card-title text-center">Max Play Time (mins)</h5>
+                <div class="form-row slider-row">
+                  <div class="col-md"></div>
+                  <div class="col-md-8">
+                    <div class="my-slider" id="maxPlayTimeSlider"></div>
+                  </div>
+                  <div class="col-md"></div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="maxPlayTimeMin" type="text" id="maxPlayTimeMin">
+                  </div>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="maxPlayTimeMax" type="text" id="maxPlayTimeMax">
+                  </div>
+                  <div class="col-md-2"></div>
+                </div>
+
+                <!-- Votes -->
+                <h5 class="card-title text-center">Votes</h5>
+                <div class="form-row slider-row">
+                  <div class="col-md"></div>
+                  <div class="col-md-8">
+                    <div class="my-slider" id="votesSlider"></div>
+                  </div>
+                  <div class="col-md"></div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="votesMin" type="text" id="votesMin">
+                  </div>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="votesMax" type="text" id="votesMax">
+                  </div>
+                  <div class="col-md-2"></div>
+                </div>
+
+                <!-- Recommended Age -->
+                <h5 class="card-title text-center">Recommended Age</h5>
+                <div class="form-row slider-row">
+                  <div class="col-md"></div>
+                  <div class="col-md-8">
+                    <div class="my-slider" id="ageSlider"></div>
+                  </div>
+                  <div class="col-md"></div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="ageMin" type="text" id="ageMin">
+                  </div>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="ageMax" type="text" id="ageMax">
+                  </div>
+                  <div class="col-md-2"></div>
+                </div>
+
+                <!-- # of Fans -->
+                <h5 class="card-title text-center"># of Fans</h5>
+                <div class="form-row slider-row">
+                  <div class="col-md"></div>
+                  <div class="col-md-8">
+                    <div class="my-slider" id="fansSlider"></div>
+                  </div>
+                  <div class="col-md"></div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="fansMin" type="text" id="fansMin">
+                  </div>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-2 value-input">
+                    <input class="input-elm" name="fansMax" type="text" id="fansMax">
+                  </div>
+                  <div class="col-md-2"></div>
+                </div>
+
+
+
+                <div class="button-group">
+                  <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                      <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button"
+                        onclick="return false;" id="submissionBtn">Submit</button>
+                    </div>
+                    <div class="col-md-3"></div>
+                  </div>
+                  <!-- <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                      <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button"
+                        onclick="return false;" id="addBtn">Add Game</button>
+                    </div>
+                    <div class="col-md-3"></div>
+                  </div> -->
+                </div>
+
+
+                <hr class="my-4">
+
+              </form>
             </div>
           </div>
         </div>
       </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+  </div>
 
 
-<div th:replace="fragments/boilerplate :: js"></div>
-<script type="text/javascript" src="js/search.js"></script>
+  <div th:replace="fragments/boilerplate :: js"></div>
+  <script type="text/javascript" src="js/search.js"></script>
+  <script type="text/javascript" src="js/nouislider.min.js"></script>
 
 </body>
 

@@ -12,5 +12,6 @@ This project has three (selfish) objectives:
 
 ## Current Roadmap (To-Do)
 
+1. Add sort-by filter for search results
 1. Add mechanics/category tags
 1. Make it pretty
