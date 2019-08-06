@@ -31,8 +31,7 @@ public class UploadController {
     @Autowired
     private UserDao userDao;
 
-    @Value("${UPLOAD_PATH_DIR}")
-    private String uploadDir;
+    private String uploadDir = Paths.get(System.getProperty("user.dir"), "src", "main", "upload").toString();
 
     @PostMapping("/upload")
     public String singleFileUpload(@RequestParam("file") MultipartFile uploadedFile,
