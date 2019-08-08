@@ -25,7 +25,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <a href="#">
-                                <img class="img-fluid img-thumbnail rounded profile-pic" th:src="@{'/upload/' + ${user.avatar}}" alt="Profile picture">
+                                <!-- <img class="img-fluid img-thumbnail rounded profile-pic" th:src="@{'/upload/' + ${user.avatar}}" alt="Profile picture"> -->
+                                <img class="img-fluid img-thumbnail rounded profile-pic" th:src="${user.avatar}" alt="Profile picture">
                             </a>
                         </div>
                         <div class="col-md-8 d-flex p-2 flex-column align-items-center justify-content-between">

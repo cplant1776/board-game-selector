@@ -20,10 +20,13 @@ public class User {
     @Column(name = "avatar")
     private String avatar;
 
+    @Column(name = "deletehash")
+    private String deletehash;
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.avatar = "placeholder-profile.jpg";
+        this.avatar = "https://i.imgur.com/UHPx2kZ.jpg";
     }
 
     public User() {
@@ -61,4 +64,8 @@ public class User {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
+
+    public String getDeletehash() { return deletehash; }
+
+    public void setDeletehash(String deletehash) { this.deletehash = deletehash; }
 }

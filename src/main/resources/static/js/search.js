@@ -69,8 +69,8 @@ function addSlider(min, max, minSelect, sliderId, maxSelect, isInverted) {
 $(document).ready(function() {
 
 
-    addSlider(1, 5500, 'rankMin', 'rankSlider', 'rankMax', false);
-    addSlider(1, 100, 'playersMin', 'playersSlider', 'playersMax', false);
+    addSlider(1, 500, 'rankMin', 'rankSlider', 'rankMax', false);
+    addSlider(1, 25, 'playersMin', 'playersSlider', 'playersMax', false);
     addSlider(0, 2019, 'yearMin', 'yearSlider', 'yearMax', false);
     addSlider(0, 6000, 'avgPlayTimeMin', 'avgPlayTimeSlider', 'avgPlayTimeMax', false);
     addSlider(0, 6000, 'minPlayTimeMin', 'minPlayTimeSlider', 'minPlayTimeMax', false);
