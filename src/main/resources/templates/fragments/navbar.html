@@ -19,7 +19,7 @@
     <!-- <div th:replace="fragments/navbar :: navbar"> -->
 
   <!-- Image and text -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navbar">
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navbar">
       <a class="navbar-brand" href="/search">
         <img th:src="@{~/images/chest.png}" height="30" width="30" class="d-inline-block align-top" alt="">  
         BGSelect
@@ -33,8 +33,34 @@
             <a class="nav-link" href="/search">Search<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/account">Account</a>
+            <a class="nav-link" href="/account">My Account</a>
           </li>
+        <span class="navbar-text">
+          Navbar text with an inline element
+        </span>
+      </div>
+    </nav> -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navbar">
+      <a class="navbar-brand" href="/search">
+        <img th:src="@{~/images/chest.png}" height="30" width="30" class="d-inline-block align-top" alt="">  
+        BGSelect
+      </a>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/search">Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/account">My Account</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          <a href="/login">Login</a> / <a href="/new-user">Register</a>
+        </span>
       </div>
     </nav>
 

@@ -4,10 +4,10 @@ import com.bgs.BoardGameSelector.model.Game;
 import com.bgs.BoardGameSelector.services.GameSearchService;
 import org.springframework.data.jpa.domain.Specification;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class GameSpecificationService implements Specification<Game> {
@@ -55,6 +55,7 @@ public class GameSpecificationService implements Specification<Game> {
         // TODO: Mechanics
 
         // TODO: Category
+
 
         return p;
     }
