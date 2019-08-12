@@ -9,9 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 public class GameSearchController {
@@ -46,11 +45,50 @@ public class GameSearchController {
         GameSearchService gameSearchService = new GameSearchService(minRank, maxRank, minNumOfPlayers, maxNumOfPlayers,
         minYearPublished, maxYearPublished, minAvgPlayTime, maxAvgPlayTime, minMinPlayTime,
         maxMinPlayTime,  minMaxPlayTime,  maxMaxPlayTime,  minVotes,  maxVotes,
-         minAge, maxAge, minFans, maxFans, mechanic, category);
+         minAge, maxAge, minFans, maxFans);
 
-        // Generate list of Games from query result
+        // Generate list of Games from filters (excluding category/mechanic)
         GameSpecificationService spec = new GameSpecificationService(gameSearchService);
-        List<Game> result = gameSearchDao.findAll(spec);
+        List<Game> foundGames = gameSearchDao.findAll(spec);
+
+        // Convert category/mechanic to integer set
+        Set<Integer> cats = convertStringToSet(category);
+        Set<Integer> mech = convertStringToSet(mechanic);
+
+        List<Game> result = new ArrayList<Game>();
+
+        /* categories, but no mechanics */
+        if ( (cats != null && !cats.isEmpty() ) && (mech == null || mech.isEmpty() ) )
+        {
+            // Get list of games with matching category tags
+            List<Game> gamesByCats = gameSearchDao.joinGameWithCategory(cats);
+            // result = (foundGames) ∩ (gamesByCats)
+            result = findGameOverlap(foundGames, gamesByCats);
+        }
+
+        /* mechanics, but no categories */
+        else if ( (cats == null || cats.isEmpty() ) && (mech != null && !mech.isEmpty() ) )
+        {
+            // Get list of games with matching mechanic tags
+            List<Game> gamesByMech = gameSearchDao.joinGameWithMechanic(mech);
+            // result = (foundGames) ∩ (gamesByCats)
+            result = findGameOverlap(foundGames, gamesByMech);
+        }
+
+        /* categories and mechanics */
+        else if ((cats != null && !cats.isEmpty() ) && (mech != null && !mech.isEmpty() ))
+        {
+            // result = (foundGames) ∩ (gamesByCats) ∩ (gamesByMech)
+            List<Game> gamesByCats = gameSearchDao.joinGameWithCategory(cats);
+            List<Game> gamesByMech = gameSearchDao.joinGameWithMechanic(mech);
+            List<Game> intersectFoundCat = findGameOverlap(foundGames, gamesByCats);
+            result = findGameOverlap(intersectFoundCat, gamesByMech);
+        }
+        else
+        {
+            result = foundGames;
+        }
+
 
         // Sort game list
         if(sortBy != null)
@@ -98,5 +136,28 @@ public class GameSearchController {
                 });
                 break;
         }
+    }
+
+    private Set<Integer> convertStringToSet(String s)
+    {
+        if(s != null && !s.isEmpty())
+        {
+            // Create list of Strings
+            List<String> strValues = Arrays.asList(s.split(","));
+            // Convert List<String> -> List<Integer>
+            List<Integer> intValues = strValues.stream().map(Integer::parseInt).collect(Collectors.toList());
+            // Convert List<Integer> -> Set<Integer>
+            Set<Integer> result = new HashSet<Integer>(intValues);
+            return result;
+        }
+        else
+            return new HashSet<Integer>();
+    }
+
+    private List<Game> findGameOverlap(List<Game> list1, List<Game> list2)
+    {
+        return  list1.stream()
+                .filter(list2::contains)
+                .collect(Collectors.toList());
     }
 }

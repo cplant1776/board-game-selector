@@ -17,7 +17,6 @@ public interface UserDao extends CrudRepository<User, Long> {
     User findByUsername(String username);
 
     @Query(
-//            value = "SELECT id, username FROM user WHERE id IN (SELECT user_id FROM comment WHERE game_id = 3);",
             value = "Select comment.id as comment_id, comment.user_id as user_id, comment.content as content, " +
                     "comment.reply_to as reply_to, user.username as username, user.avatar as avatar\n" +
                     "from comment\n" +

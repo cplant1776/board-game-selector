@@ -58,12 +58,6 @@ public class Game {
     @Column(name = "age")
     private Integer age;
 
-    @Column(name = "mechanic")
-    private String mechanic;
-
-    @Column(name = "category")
-    private String category;
-
     @Column(name = "designer")
     private String designer;
 
@@ -140,14 +134,6 @@ public class Game {
 
     public Integer getAge() {
         return age;
-    }
-
-    public String getMechanic() {
-        return mechanic;
-    }
-
-    public String getCategory() {
-        return category;
     }
 
     public String getDesigner() { return designer; }
@@ -229,14 +215,6 @@ public class Game {
         this.age = age;
     }
 
-    public void setMechanic(String mechanic) {
-        this.mechanic = mechanic;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public void setDesigner(String designer) { this.designer = designer; }
 
     public void setPublisher(String publisher) {
@@ -264,10 +242,11 @@ public class Game {
     }
 
 
+
     public Game(Integer gameRank, String bggURL, Integer gameId, String name, Integer minPlayers, Integer maxPlayers,
                 Integer avgPlayTime, Integer minPlayTime, Integer maxPlayTime, Integer year, Double avgRating,
-                Integer numOfVotes, String imageURL, String thumbnailURL, Integer age, String mechanics,
-                String categories, String designer, String publisher, Integer numOfFans, String description, Boolean isUserAdded)
+                Integer numOfVotes, String imageURL, String thumbnailURL, Integer age,
+                String designer, String publisher, Integer numOfFans, String description, Boolean isUserAdded)
     {
         this.gameRank = gameRank;
         this.bgg_url = bggURL;
@@ -284,8 +263,6 @@ public class Game {
         this.img_url = imageURL;
         this.thumb_url = thumbnailURL;
         this.age = age;
-        this.mechanic = mechanics;
-        this.category = categories;
         this.designer = designer;
         this.publisher = publisher;
         this.fans = numOfFans;

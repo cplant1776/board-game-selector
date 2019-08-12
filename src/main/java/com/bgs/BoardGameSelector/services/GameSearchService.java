@@ -20,13 +20,11 @@ public class GameSearchService {
     public int maxAge;
     public int minFans;
     public int maxFans;
-    public String mechanic;
-    public String category;
 
     public GameSearchService(int minRank, int maxRank, int minNumOfPlayers, int maxNumOfPlayers, int minYearPublished,
                              int maxYearPublished, int minAvgPlayTime, int maxAvgPlayTime, int minMinPlayTime,
                              int maxMinPlayTime, int minMaxPlayTime, int maxMaxPlayTime, int minVotes, int maxVotes,
-                             int minAge, int maxAge, int minFans, int maxFans, String mechanic, String category)
+                             int minAge, int maxAge, int minFans, int maxFans)
     {
         this.minRank = minRank;
         this.maxRank = maxRank;
@@ -46,8 +44,6 @@ public class GameSearchService {
         this.maxAge = maxAge;
         this.minFans = minFans;
         this.maxFans = maxFans;
-        this.mechanic = mechanic;
-        this.category = category;
     }
 
     public GameSearchService() {
@@ -69,8 +65,6 @@ public class GameSearchService {
         this.maxAge = 0;
         this.minFans = 0;
         this.maxFans = 0;
-        this.mechanic = "";
-        this.category = "";
     }
 
 }
