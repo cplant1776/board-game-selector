@@ -25,6 +25,13 @@
               <option value="votes">Votes</option>
             </select>
           </div>
+          <div class="col-md-4 text-center">
+            <h4>Page</h4>
+
+            <select onchange="switchPage(this)" class="page-dropdown">
+            </select>
+
+          </div>
           <div class="col-md"></div>
       </div>
       <table class="table" id="search-results-table">
@@ -32,10 +39,29 @@
         <div th:replace="fragments/game-results :: game-results"></div>
 
     </table>
+    <div class="row">
+      <div class="col-md"></div>
+      <div class="col-md-4 text-center">
+        <h4>Page</h4>
+
+        <select onchange="switchPage(this)" class="page-dropdown">
+        </select>
+
+      </div>
+      <div class="col-md"></div>
+  </div>
   </div>
 
 
   <div th:replace="fragments/boilerplate :: js"></div>
+
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+
+    var numOfPages = /*[[${numOfPages}]]*/ 'default';
+
+    /*]]>*/
+  </script>
   <script type="text/javascript" src="js/result.js"></script>
 </body>
 

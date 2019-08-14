@@ -38,6 +38,7 @@ public class GameSearchController {
                             @RequestParam(name="fansMax", required = false, defaultValue = "999999") int maxFans,
                             @RequestParam(name="mechanic", required = false, defaultValue = "") String mechanic,
                             @RequestParam(name="category", required = false, defaultValue = "") String category,
+                            @RequestParam(name="page", required = false, defaultValue = "1") int page,
                             @RequestParam(name="sort", required=false, defaultValue="gameRank") String sortBy,
                              Model model) {
 
@@ -94,8 +95,23 @@ public class GameSearchController {
         if(sortBy != null)
             sortGameList(result, sortBy);
 
+        // Check validity of page param
+        int maxNumOfPages = (result.size() / 20) + 1;
+        if (page > maxNumOfPages)
+            page = maxNumOfPages;
+
+        // Get slice of result list to display
+        int startIndex = (page - 1) * 20;
+        int endIndex = ((page - 1) * 20) + 20;
+        if (endIndex > result.size())
+            endIndex = result.size();
+        List<Game> slicedResult = result.subList(startIndex, endIndex);
+
         // Add results to search result page
-        model.addAttribute("games", result);
+        model.addAttribute("games", slicedResult);
+
+        // Add num of pages to result page
+        model.addAttribute("numOfPages", maxNumOfPages);
 
         // Debug purposes
         System.out.println(result.size());

@@ -34,3 +34,25 @@ function stripCurrentSort(currentUrl) {
    }
 
 }
+
+function switchPage(newPage)
+{
+   var currentUrl = window.location.href;
+   var regex = /(&page=)(.*)(&)/;
+   newUrl = currentUrl.replace(regex, '$1' + newPage.value + '$3');
+
+   window.location.href = newUrl;
+};
+
+function addPageSelectOptions(numOfPages) {
+   for (var i=1; i <= numOfPages; i++)
+   {
+      $('.page-dropdown').append(new Option(i, i));
+   }
+};
+
+$(document).ready(function() {
+   // Populate page drop-down menus
+   window.addPageSelectOptions(numOfPages);
+ 
+ });

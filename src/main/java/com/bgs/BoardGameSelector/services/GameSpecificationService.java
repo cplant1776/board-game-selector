@@ -52,11 +52,6 @@ public class GameSpecificationService implements Specification<Game> {
         // Number of Fans
         p.getExpressions().add(cb.between(root.get("fans"), criteria.minFans, criteria.maxFans));
 
-        // TODO: Mechanics
-
-        // TODO: Category
-
-
         return p;
     }
 
