@@ -76,10 +76,10 @@ public class GameSearchController {
             result = findGameOverlap(foundGames, gamesByMech);
         }
 
-        /* categories and mechanics */
+        /* categories and mechanics ... most specific*/
         else if ((cats != null && !cats.isEmpty() ) && (mech != null && !mech.isEmpty() ))
         {
-            // result = (foundGames) ∩ (gamesByCats) ∩ (gamesByMech)
+            // result = (foundGames) ∩ [(gamesByCats) ∩ (gamesByMech)]
             List<Game> gamesByCats = gameSearchDao.joinGameWithCategory(cats);
             List<Game> gamesByMech = gameSearchDao.joinGameWithMechanic(mech);
             List<Game> intersectFoundCat = findGameOverlap(foundGames, gamesByCats);
