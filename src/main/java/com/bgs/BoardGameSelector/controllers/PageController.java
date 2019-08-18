@@ -5,6 +5,7 @@ import com.bgs.BoardGameSelector.dao.GameDao;
 import com.bgs.BoardGameSelector.dao.UserDao;
 import com.bgs.BoardGameSelector.model.*;
 import com.bgs.BoardGameSelector.services.CommentDisplayService;
+import com.bgs.BoardGameSelector.services.FilterSliderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,7 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Filter;
 
 @Controller
 public class PageController {
@@ -29,7 +32,23 @@ public class PageController {
     private CommentDao commentDao;
 
     @GetMapping("/search")
-    public String search(Model model) { return "search"; }
+    public String search(Model model) {
+        // Initialize slider structs
+        List<FilterSliderService> sliders = Arrays.asList(
+                new FilterSliderService("rank", "Rank", 1, 500),
+                new FilterSliderService("players", "# of Players", 1, 25),
+                new FilterSliderService("year", "Year", 0, 2019),
+                new FilterSliderService("avgPlayTime", "Avg Play Time", 0, 6000),
+                new FilterSliderService("minPlayTime", "Min Play Time", 0, 6000),
+                new FilterSliderService("maxPlayTime", "Max Play Time", 0, 6000),
+                new FilterSliderService("votes", "# of Votes", 0, 100000),
+                new FilterSliderService("age", "Recommended Age", 0, 100),
+                new FilterSliderService("fans", "# of Fans", 0, 6000)
+        );
+
+        model.addAttribute("sliders", sliders);
+        return "search";
+    }
 
     @GetMapping("/")
     public String home(Model model) { return "index"; }

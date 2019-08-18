@@ -5,8 +5,9 @@
 
   <div th:replace="fragments/boilerplate :: head"></div>
 
-  <link rel="stylesheet" th:href="@{css/search.css}">
-  <link rel="stylesheet" th:href="@{css/nouislider.min.css}">
+  <div th:replace="fragments/boilerplate :: css"></div>
+  <!-- <link rel="stylesheet" th:href="@{css/search.css}"> -->
+  <link rel="stylesheet" th:href="@{css/nouislider.css}">
 
   <title>Search for Games</title>
 </head>
@@ -15,286 +16,125 @@
 
   <div th:replace="fragments/navbar :: navbar"></div>
 
-  <div class="container align-items-center">
+  <!-- Page top section -->
+  <section class="page-top-section set-bg" data-setbg="images/page-top-bg/1.jpg">
+    <div class="page-info text-center">
+      <h2>Search</h2>
+      <div class="site-breadcrumb">
+        <span>Select filters</span>
+      </div>
+    </div>
+  </section>
+  <!-- Page top end-->
 
-    <div class="row">
-      <div class="col-md-1"></div>
+  <!-- Sliders section -->
+  <section class="newsletter-section">
+    <div class="container">
+      <form class="filter sliders text-center" action="/query" method="get">
 
-      <div class="row display-card col-md-10">
-        <div class="col-sm-9 col-md-7 col-lg-10 mx-auto">
-          <div class="card card-signin my-5">
-            <div class="card-body">
-              <form class="form-signin" action="/query" method="get">
+        <th:block th:each="slider, count: ${sliders}">
+          <div class="slider-row">
+            <div class="text-white">
+              <h4 th:text="${slider.display}"></h4>
+            </div>
 
-                <!-- Rank -->
-                <h5 class="card-title text-center">Rank</h5>
-                <div class="form-row slider-row">
-                  <div class="col-md"></div>
-                  <div class="col-md-8">
-                    <div class="my-slider" id="rankSlider"></div>
-                  </div>
-                  <div class="col-md"></div>
-                </div>
-                <div class="form-row">
-                  <div class="col-md-2"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="rankMin" type="text" id="rankMin">
-                  </div>
-                  <div class="col-md-4"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="rankMax" type="text" id="rankMax">
-                  </div>
-                  <div class="col-md-2"></div>
-                </div>
+            <div class="form-row slider-row">
+              <div class="col-md"></div>
+              <div class="col-md-8">
+                <div class="my-slider" th:id="${slider.id} + 'Slider'"></div>
+              </div>
+              <div class="col-md"></div>
+            </div>
 
-                <!-- # of Players -->
-                <h5 class="card-title text-center">Num of Players</h5>
-                <div class="form-row slider-row">
-                  <div class="col-md"></div>
-                  <div class="col-md-8">
-                    <div class="my-slider" id="playersSlider"></div>
-                  </div>
-                  <div class="col-md"></div>
-                </div>
-                <div class="form-row">
-                  <div class="col-md-2"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="playersMin" type="text" id="playersMin">
-                  </div>
-                  <div class="col-md-4"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="playersMax" type="text" id="playersMax">
-                  </div>
-                  <div class="col-md-2"></div>
-                </div>
+            <div class="form-row">
+              <div class="col-md-2"></div>
+              <div class="col-md-1 value-input">
+                <input class="input-elm text-center" th:name="${slider.id} + 'Min'" type="text"
+                  th:id="${slider.id} + 'Min'" th:value="${slider.min}">
+              </div>
+              <div class="col-md-6"></div>
+              <div class="col-md-1 value-input">
+                <input class="input-elm text=center" th:name="${slider.id} + 'Max'" type="text"
+                  th:id="${slider.id} + 'Max'" th:value="${slider.max}">
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+          </div>
+        </th:block>
 
-                <!-- Year -->
-                <h5 class="card-title text-center">Year Published</h5>
-                <div class="form-row slider-row">
-                  <div class="col-md"></div>
-                  <div class="col-md-8">
-                    <div class="my-slider" id="yearSlider"></div>
-                  </div>
-                  <div class="col-md"></div>
-                </div>
-                <div class="form-row">
-                  <div class="col-md-2"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="yearMin" type="text" id="yearMin">
-                  </div>
-                  <div class="col-md-4"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="yearMax" type="text" id="yearMax">
-                  </div>
-                  <div class="col-md-2"></div>
-                </div>
+        <!-- Category/Mechanic Modal Buttons -->
+        <div class="row search-btn-row">
+          <div class="col-md-4"></div>
+          <div class="col-md-1">
+            <button type="button" class="btn btn-warning" data-toggle="modal"
+              data-target="#categoryModal">Categories</button>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-1">
+            <button type="button" class="btn btn-warning" data-toggle="modal"
+              data-target="#mechanicModal">Mechanics</button>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
 
-                <!-- Average Play Time -->
-                <h5 class="card-title text-center">Avg Play Time (mins)</h5>
-                <div class="form-row slider-row">
-                  <div class="col-md"></div>
-                  <div class="col-md-8">
-                    <div class="my-slider" id="avgPlayTimeSlider"></div>
-                  </div>
-                  <div class="col-md"></div>
-                </div>
-                <div class="form-row">
-                  <div class="col-md-2"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="avgPlayTimeMin" type="text" id="avgPlayTimeMin">
-                  </div>
-                  <div class="col-md-4"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="avgPlayTimeMax" type="text" id="avgPlayTimeMax">
-                  </div>
-                  <div class="col-md-2"></div>
-                </div>
+        <!-- Submission Button -->
+        <div class="button-group">
+            <div class="row submit-btn-row">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <button class="site-btn" type="button"
+                  onclick="return false;" id="submissionBtn">Submit</button>
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
 
-                <!-- Minimum Play Time -->
-                <h5 class="card-title text-center">Min Play Time (mins)</h5>
-                <div class="form-row slider-row">
-                  <div class="col-md"></div>
-                  <div class="col-md-8">
-                    <div class="my-slider" id="minPlayTimeSlider"></div>
-                  </div>
-                  <div class="col-md"></div>
-                </div>
-                <div class="form-row">
-                  <div class="col-md-2"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="minPlayTimeMin" type="text" id="minPlayTimeMin">
-                  </div>
-                  <div class="col-md-4"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="minPlayTimeMax" type="text" id="minPlayTimeMax">
-                  </div>
-                  <div class="col-md-2"></div>
-                </div>
-
-                <!-- Maximum Play Time -->
-                <h5 class="card-title text-center">Max Play Time (mins)</h5>
-                <div class="form-row slider-row">
-                  <div class="col-md"></div>
-                  <div class="col-md-8">
-                    <div class="my-slider" id="maxPlayTimeSlider"></div>
-                  </div>
-                  <div class="col-md"></div>
-                </div>
-                <div class="form-row">
-                  <div class="col-md-2"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="maxPlayTimeMin" type="text" id="maxPlayTimeMin">
-                  </div>
-                  <div class="col-md-4"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="maxPlayTimeMax" type="text" id="maxPlayTimeMax">
-                  </div>
-                  <div class="col-md-2"></div>
-                </div>
-
-                <!-- Votes -->
-                <h5 class="card-title text-center">Votes</h5>
-                <div class="form-row slider-row">
-                  <div class="col-md"></div>
-                  <div class="col-md-8">
-                    <div class="my-slider" id="votesSlider"></div>
-                  </div>
-                  <div class="col-md"></div>
-                </div>
-                <div class="form-row">
-                  <div class="col-md-2"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="votesMin" type="text" id="votesMin">
-                  </div>
-                  <div class="col-md-4"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="votesMax" type="text" id="votesMax">
-                  </div>
-                  <div class="col-md-2"></div>
-                </div>
-
-                <!-- Recommended Age -->
-                <h5 class="card-title text-center">Recommended Age</h5>
-                <div class="form-row slider-row">
-                  <div class="col-md"></div>
-                  <div class="col-md-8">
-                    <div class="my-slider" id="ageSlider"></div>
-                  </div>
-                  <div class="col-md"></div>
-                </div>
-                <div class="form-row">
-                  <div class="col-md-2"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="ageMin" type="text" id="ageMin">
-                  </div>
-                  <div class="col-md-4"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="ageMax" type="text" id="ageMax">
-                  </div>
-                  <div class="col-md-2"></div>
-                </div>
-
-                <!-- # of Fans -->
-                <h5 class="card-title text-center"># of Fans</h5>
-                <div class="form-row slider-row">
-                  <div class="col-md"></div>
-                  <div class="col-md-8">
-                    <div class="my-slider" id="fansSlider"></div>
-                  </div>
-                  <div class="col-md"></div>
-                </div>
-                <div class="form-row">
-                  <div class="col-md-2"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="fansMin" type="text" id="fansMin">
-                  </div>
-                  <div class="col-md-4"></div>
-                  <div class="col-md-2 value-input">
-                    <input class="input-elm" name="fansMax" type="text" id="fansMax">
-                  </div>
-                  <div class="col-md-2"></div>
-                </div>
-
-
-                <!-- Category/Mechanic Modal Buttons -->
-                <div class="row">
-                  <button type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#categoryModal">Categories</button>
-                  <button type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#mechanicModal">Mechanics</button>
-                </div>
-
-
-                <!-- Category Modal -->
-                <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog"
-                  aria-labelledby="categoryModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="categoryModalLabel">Select Categories</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body" id="categoryModalBody">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Accept</button>
-                        <button type="button" class="btn btn-primary">Send</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Mechanic Modal -->
-                <div class="modal fade" id="mechanicModal" tabindex="-1" role="dialog"
-                  aria-labelledby="mechanicModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="mechanicModalLabel">Select Mechanics</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body" id="mechanicModalBody">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Accept</button>
-                        <!-- <button type="button" class="btn btn-primary">Send</button> -->
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-
-                <div class="button-group">
-                  <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6">
-                      <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button"
-                        onclick="return false;" id="submissionBtn">Submit</button>
-                    </div>
-                    <div class="col-md-3"></div>
-                  </div>
-                </div>
-
-
-                <hr class="my-4">
-
-                <!-- <input type="hidden" value="gameRank" name="sort" /> -->
-
-              </form>
+        <!-- Category Modal -->
+        <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="categoryModalLabel">Select Categories</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="categoryModalBody">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Accept</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-1"></div>
-    </div>
-  </div>
-  </div>
 
+        <!-- Mechanic Modal -->
+        <div class="modal fade" id="mechanicModal" tabindex="-1" role="dialog" aria-labelledby="mechanicModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="mechanicModalLabel">Select Mechanics</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="mechanicModalBody">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Accept</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </section>
+  <!-- Sliders section end -->
+
+  <div th:replace="fragments/footer :: footer"></div>
 
   <div th:replace="fragments/boilerplate :: js"></div>
   <script type="text/javascript" src="js/search.js"></script>

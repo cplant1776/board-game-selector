@@ -1766,3 +1766,23 @@ ol {
 		margin-bottom: 20px;
 	}
 }
+
+
+/* =====================================
+		My amature additions
+/* =====================================*/
+.my-slider {
+	margin: 20px;
+}
+
+.input-elm {
+	width: 75px;
+}
+
+.search-btn-row {
+	margin-top: 30px;
+}
+
+.submit-btn-row {
+	margin-top: 60px;
+}
