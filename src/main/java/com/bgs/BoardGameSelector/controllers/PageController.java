@@ -32,8 +32,10 @@ public class PageController {
     public String search(Model model) { return "search"; }
 
     @GetMapping("/")
-    public String home(Model model) { return "search"; }
+    public String home(Model model) { return "index"; }
 
+    @GetMapping("/index")
+    public String index(Model model) { return "index"; }
 
     @GetMapping("/game/{gameId}")
     public String gamePage(@PathVariable(name = "gameId") int id, Model model)
@@ -99,9 +101,14 @@ public class PageController {
     public String accountRedirect(Model model) {
         // Get logged-in userId
         User user = userDao.findByUsername(getLoggedInUsername());
-        long userId = user.getId();
+        if (user!= null)
+        {
+            long userId = user.getId();
+            return "redirect:" + "/account/" + userId;
+        }
+        else
+            return "redirect:" + "/login";
 
-        return "redirect:" + "/account/" + userId;
     }
 
     @GetMapping("/account/{userId}")
