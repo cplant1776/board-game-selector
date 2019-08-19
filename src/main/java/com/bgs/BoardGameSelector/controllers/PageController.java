@@ -2,6 +2,7 @@ package com.bgs.BoardGameSelector.controllers;
 
 import com.bgs.BoardGameSelector.dao.CommentDao;
 import com.bgs.BoardGameSelector.dao.GameDao;
+import com.bgs.BoardGameSelector.dao.GameSearchDao;
 import com.bgs.BoardGameSelector.dao.UserDao;
 import com.bgs.BoardGameSelector.model.*;
 import com.bgs.BoardGameSelector.services.CommentDisplayService;
@@ -14,8 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Filter;
 
@@ -30,6 +33,9 @@ public class PageController {
 
     @Autowired
     private CommentDao commentDao;
+
+    @Autowired
+    private GameSearchDao gameSearchDao;
 
     @GetMapping("/search")
     public String search(Model model) {
@@ -61,6 +67,11 @@ public class PageController {
     {
         // Fetch game from DB
         Game game = gameDao.findByGameId(id);
+        // Fetch game categories and mechanics as a string
+        List<String> catList = gameSearchDao.findGameCategoryById(game.getGameId());
+        List<String> mechList = gameSearchDao.findGameMechanicById(game.getGameId());
+        String cats = String.join(", ", catList);
+        String mech = String.join(", ", mechList);
         // Fetch comments on this game along with their creator's username
         ArrayList<Object[]> commentedUsers = userDao.joinUsersWithComment(id);
         ArrayList<CommentDisplayService> comments = new ArrayList<>();
@@ -70,13 +81,16 @@ public class PageController {
         else {
             for (Object[] cd : commentedUsers) {
                 CommentDisplayService newComment = new CommentDisplayService(
-                        (Integer) cd[0], (Integer) cd[1], (String) cd[2], (Integer) cd[3], (String) cd[4], (String) cd[5]);
+                        (Integer) cd[0], (Integer) cd[1], (String) cd[2], (Integer) cd[3],
+                        (String) cd[4], (String) cd[5], (Date) cd[6]);
                 comments.add(newComment);
             }
         }
 
         // Add objects to model
         model.addAttribute("game", game);
+        model.addAttribute("categories", cats);
+        model.addAttribute("mechanics", mech);
         model.addAttribute("comments", comments);
         model.addAttribute("username", getLoggedInUsername());
         model.addAttribute("avatar", getLoggedInAvatar());

@@ -18,7 +18,8 @@ public interface UserDao extends CrudRepository<User, Long> {
 
     @Query(
             value = "Select comment.id as comment_id, comment.user_id as user_id, comment.content as content, " +
-                    "comment.reply_to as reply_to, user.username as username, user.avatar as avatar\n" +
+                    "comment.reply_to as reply_to, user.username as username, user.avatar as avatar," +
+                    "comment.date_created as date\n" +
                     "from comment\n" +
                     " join user \n" +
                     " on comment.user_id = user.id\n" +

@@ -1,7 +1,10 @@
 package com.bgs.BoardGameSelector.model;
 
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "comment")
@@ -23,6 +26,11 @@ public class Comment {
 
     @Column(name = "reply_to")
     private long replyTo;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date_created")
+    private Date date;
 
     public Comment() {
 
@@ -72,5 +80,13 @@ public class Comment {
 
     public void setReplyTo(long replyTo) {
         this.replyTo = replyTo;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

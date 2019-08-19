@@ -1380,7 +1380,7 @@ ol {
 ---------------------*/
 
 .review-item {
-	margin-bottom: 87px;
+	margin-bottom: 30px;
 }
 
 .review-content {
@@ -1623,6 +1623,7 @@ ol {
 	.review-pic img {
 		min-width: 100%;
 		margin-bottom: 30px;
+		background: #1a0d36;
 	}
 	.contact-text {
 		margin-bottom: 50px;
@@ -1721,6 +1722,7 @@ ol {
 	.review-pic img {
 		min-width: 100%;
 		margin-bottom: 30px;
+		background: #1a0d36;
 	}
 	.contact-text {
 		margin-bottom: 50px;
@@ -1843,4 +1845,60 @@ tr {
 	margin-right: 0;
 	font-weight: bold;	
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.tag-title {
+	color: white;
+	display: block;
+	font-size: 1.25em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;	
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	padding-left: 30px;
+}
+
+.profile-pic {
+	max-height: 100px;
+	max-width: 100px;
+}
+
+.avatar {
+	max-height: 300px;
+}
+
+.comment-row {
+	background: #34164b;
+	padding: 15px;
+}
+
+.comment-name {
+	color: white;
+	display: block;
+	font-size: 1.45em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;	
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	padding-left: 30px;
+}
+
+.comment-date {
+	color: #cf21c4;
+	display: block;
+	font-size: 1.15em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;	
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	padding-left: 30px;
+}
+
+.comment-top {
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+.comment-textarea {
+	margin: 15px;
 }

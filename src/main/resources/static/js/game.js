@@ -1,5 +1,5 @@
 $(".commentBtn").click(function() {
-    $("#comment-box").append( $(".new-comment"));
+    $(".game-single-content").append( $(".new-comment"));
     $(".commentBtn").attr("hidden", "true");
 });
 
