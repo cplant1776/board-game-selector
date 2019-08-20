@@ -40,10 +40,5 @@ $(document).ready(function() {
 		})
     
  });
-
-
- 2abd96f2cc1848eed78ebfc7329c34a227541d92 v1.0.0 [prototype]
- a6d87caebfc6ced3dfe2896e007c5ffdb837a94e v1.1.0 [restructured db tags]
- 6f88df77c2f8c73772560c0ff52af19e6b7ff892 v1.1.1 [added mechanics/category filters]
  
 

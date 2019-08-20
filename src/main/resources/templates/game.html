@@ -33,14 +33,14 @@
     <div class="container">
 
       <!-- Game Image -->
-      <div class="game-single-preview">
+      <div class="game-single-preview text-center">
         <img th:src="${game.img_url}" alt="Game image">
       </div>
 
       <!-- Edit Button -->
       <div class="row" th:if="${game.authorUsername == username}">
         <div class="col-md"></div>
-        <div class="col-md-6">
+        <div class="col-md-6 text-center">
           <button class="site-btn" id="editBtn" th:data-id="${game.gameId}"
             onclick="location.href='/edit/' + this.getAttribute('data-id')">EDIT</button>
         </div>
@@ -54,7 +54,8 @@
           <h2 class="gs-title" th:text="${game.name}"></h2>
           <div class="gs-meta" th:text="'From ' + ${game.publisher}"></div>
           <h4>Description</h4>
-          <p th:text="${game.description}"></p>
+          <p th:utext="${#strings.replace( #strings.escapeXml( game.description ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}" ></p>
+          <!-- <p th:text="${game.description}"></p> -->
 
           <h4>Comments</h4>
           <!-- Comments -->

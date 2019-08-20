@@ -155,6 +155,12 @@ public class PageController {
 
         // Check if logged-in user is authorized for this page
         User attemptedUser = userDao.findByUsername(getLoggedInUsername());
+        if (attemptedUser == null)
+        {
+            model.addAttribute("incorrectUser", true);
+            return "account";
+        }
+
         if (attemptedUser.getId() != user.getId())
             model.addAttribute("incorrectUser", true);
         else
@@ -180,7 +186,7 @@ public class PageController {
     private String getLoggedInAvatar() {
         String username = getLoggedInUsername();
         if (username.equals("anonymousUser"))
-            return "";
+            return null;
         User user = userDao.findByUsername(username);
         return user.getAvatar();
     }

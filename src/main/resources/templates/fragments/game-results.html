@@ -17,13 +17,15 @@
 
   <div th:fragment="game-results">
     <th:block th:each="game, count: ${games}">
-      <tr class="result-card" th:if="${count.index < 20}" th:data-id="${game.gameId}"
-        onclick="selectGame(this.getAttribute('data-id'))">
+      <tr class="result-card" th:if="${count.index < 20}">
+        <!-- <tr class="result-card" th:if="${count.index < 20}" th:data-id="${game.gameId}" -->
+        <!-- onclick="selectGame(this.getAttribute('data-id'))"> -->
         <td>
           <div class="row">
               <div class="col-md-2"></div>
 
-              <div class="container-fluid header-bar-wrap result-entry col-md">
+              <div class="container-fluid header-bar-wrap result-entry col-md" th:data-id="${game.gameId}"
+              onclick="selectGame(this.getAttribute('data-id'))">
                 <div class="row">
                   <div class="col-md-4">
                   </div>

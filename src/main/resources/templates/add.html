@@ -3,7 +3,8 @@
 
 <head>
   <div th:replace="fragments/boilerplate :: head"></div>
-  <link rel="stylesheet" href="css/add.css">
+  <div th:replace="fragments/boilerplate :: css"></div>
+  <!-- <link rel="stylesheet" href="css/add.css"> -->
   <title>Add a Game</title>
 </head>
 
@@ -11,117 +12,132 @@
 
   <div th:replace="fragments/navbar :: navbar"></div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col align-self-center">
-        <h1>Add a Game</h1>
+  <!-- Page top section -->
+  <section class="page-top-section set-bg" th:data-setbg="@{~/images/page-top-bg/1.jpg}">
+    <div class="page-info">
+      <h2>Add Game</h2>
+      <div class="site-breadcrumb">
+        <a href="/home">Home</a> /
+        <span>Add</span>
       </div>
     </div>
+  </section>
+  <!-- Page top end-->
 
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10 game-form">
-        <form action="/game/success" method="post">
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="name">Name</label>
-              <input type="text" name="name" id="name" class="form-control" placeholder="Game Name" required>
-              <div class="invalid-feedback">
-                Please enter a name.
+  <!-- Game Form -->
+  <section class="newsletter-section">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 game-form">
+          <form action="/game/success" method="post">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Game Name" required>
+                <div class="invalid-feedback">
+                  Please enter a name.
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="designer">Designer</label>
+                <input type="text" name="designer" id="designer" class="form-control" placeholder="Designer" required>
               </div>
             </div>
-            <div class="form-group col-md-6">
-              <label for="designer">Designer</label>
-              <input type="text" name="designer" id="designer" class="form-control" placeholder="Designer" required>
-            </div>
-          </div>
 
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="publisher">Publisher</label>
-              <input type="text" name="publisher" id="publisher" class="form-control" placeholder="Publisher" required>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="publisher">Publisher</label>
+                <input type="text" name="publisher" id="publisher" class="form-control" placeholder="Publisher"
+                  required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="year">Year</label>
+                <input type="text" name="year" id="year" class="form-control" placeholder="Year Published" required>
+              </div>
             </div>
-            <div class="form-group col-md-6">
-              <label for="year">Year</label>
-              <input type="text" name="year" id="year" class="form-control" placeholder="Year Published" required>
-            </div>
-          </div>
 
-          <div class="form-row">
-            <div class="form-group col-md-4">
-              <label for="min-players">Minimum Players</label>
-              <select name="min-players" id="min-players" class="form-control" required>
-              </select>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="min-players">Minimum Players</label>
+                <select name="min-players" id="min-players" class="form-control" required>
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="max-players">Maximum Players</label>
+                <select name="max-players" id="max-players" class="form-control" required>
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="age">Minimum Age</label>
+                <select name="age" id="age" class="form-control" required>
+                </select>
+              </div>
             </div>
-            <div class="form-group col-md-4">
-              <label for="max-players">Maximum Players</label>
-              <select name="max-players" id="max-players" class="form-control" required>
-              </select>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="age">Minimum Age</label>
-              <select name="age" id="age" class="form-control" required>
-              </select>
-            </div>
-          </div>
 
-          <div class="form-row">
-            <div class="form-group col-md-4">
-              <label for="avg-play-time">Average Play Time</label>
-              <input type="text" name="avg-play-time" id="avg-play-time" class="form-control" placeholder="Minutes"
-                required>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="avg-play-time">Average Play Time</label>
+                <input type="text" name="avg-play-time" id="avg-play-time" class="form-control" placeholder="Minutes"
+                  required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="min-play-time">Minimum Play Time</label>
+                <input type="text" name="min-play-time" id="min-play-time" class="form-control" placeholder="Minutes"
+                  required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="max-play-time">Maximum Play Time</label>
+                <input type="text" name="max-play-time" id="max-play-time" class="form-control" placeholder="Minutes"
+                  required>
+              </div>
             </div>
-            <div class="form-group col-md-4">
-              <label for="min-play-time">Minimum Play Time</label>
-              <input type="text" name="min-play-time" id="min-play-time" class="form-control" placeholder="Minutes"
-                required>
+
+            <div class="form-group">
+              <label for="desc">Game Description</label>
+              <textarea class="form-control" name="desc" id="desc" rows="3" placeholder="Tell us about the game!"
+                required></textarea>
             </div>
-            <div class="form-group col-md-4">
-              <label for="max-play-time">Maximum Play Time</label>
-              <input type="text" name="max-play-time" id="max-play-time" class="form-control" placeholder="Minutes"
-                required>
+
+            <div class="form-group">
+              <label for="img-url">Image URL</label>
+              <input type="text" class="form-control" name="img-url" id="img-url"
+                placeholder="https://example.com/my_image.jpg" required>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="desc">Game Description</label>
-            <textarea class="form-control" name="desc" id="desc" rows="3" placeholder="Tell us about the game!"
-              required></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="img-url">Image URL</label>
-            <input type="text" class="form-control" name="img-url" id="img-url"
-              placeholder="https://example.com/my_image.jpg" required>
-          </div>
-
-          <div class="form-group">
-            <label for="thumb-url">Thumbnail URL</label>
-            <input type="text" name="thumb-url" class="form-control" id="thumb-url"
-              placeholder="https://example.com/my_thumbnail.jpg" required>
-          </div>
-
-          <div class="form-group">
-            <label for="bgg-url">BGG URL</label>
-            <input type="text" name="bgg-url" class="form-control" id="bgg-url"
-              placeholder="https://boardgamegeek.com/boardgame/1111/game-name">
-          </div>
-
-          <div class="form-row">
-            <div class="col-md"></div>
-            <div class="col-md-3">
-              <button class="btn btn-success btn-block" id="submitBtn">Submit</button>
+            <div class="form-group">
+              <label for="thumb-url">Thumbnail URL</label>
+              <input type="text" name="thumb-url" class="form-control" id="thumb-url"
+                placeholder="https://example.com/my_thumbnail.jpg" required>
             </div>
-            <div class="col-md"></div>
-          </div>
+
+            <div class="form-group">
+              <label for="bgg-url">BGG URL</label>
+              <input type="text" name="bgg-url" class="form-control" id="bgg-url"
+                placeholder="https://boardgamegeek.com/boardgame/1111/game-name">
+            </div>
+
+            <div class="form-row">
+              <div class="col-md"></div>
+              <div class="col-md-3">
+                <button class="site-btn" id="submitBtn">Submit</button>
+              </div>
+              <div class="col-md"></div>
+            </div>
 
 
-        </form>
+          </form>
+
+        </div>
         <div class="col-md-1"></div>
       </div>
-    </div>
-  </div>
 
+    </div>
+  </section>
+
+
+  <div th:replace="fragments/footer :: footer"></div>
 
   <div th:replace="fragments/boilerplate :: js"></div>
   <script type="text/javascript" src="js/add.js"></script>

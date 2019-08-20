@@ -23,14 +23,22 @@ public class User {
     @Column(name = "deletehash")
     private String deletehash;
 
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.avatar = "https://i.imgur.com/UHPx2kZ.jpg";
+
+        final String defaultAvatar = "https://i.imgur.com/qCkhJd6.jpg";
+        final String defaultDeleteHash = "OyffnmIWkxJJZg9";
+        this.avatar = defaultAvatar;
+        this.deletehash = defaultDeleteHash;
     }
 
     public User() {
-
+        final String defaultAvatar = "https://i.imgur.com/qCkhJd6.jpg";
+        final String defaultDeleteHash = "OyffnmIWkxJJZg9";
+        this.avatar = defaultAvatar;
+        this.deletehash = defaultDeleteHash;
     }
 
     public long getId() {
