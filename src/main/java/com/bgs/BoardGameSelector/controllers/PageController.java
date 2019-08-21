@@ -155,7 +155,7 @@ public class PageController {
 
         // Check if logged-in user is authorized for this page
         User attemptedUser = userDao.findByUsername(getLoggedInUsername());
-        if (attemptedUser == null)
+        if (attemptedUser == null || user == null)
         {
             model.addAttribute("incorrectUser", true);
             return "account";

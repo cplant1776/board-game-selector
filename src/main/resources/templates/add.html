@@ -118,12 +118,67 @@
                 placeholder="https://boardgamegeek.com/boardgame/1111/game-name">
             </div>
 
-            <div class="form-row">
+            <!-- Category/Mechanic Modal Buttons -->
+            <div class="row search-btn-row">
+              <div class="col-md-4"></div>
+              <div class="col-md-1">
+                <button type="button" class="btn btn-warning" data-toggle="modal"
+                  data-target="#categoryModal">Categories</button>
+              </div>
+              <div class="col-md-2"></div>
+              <div class="col-md-1">
+                <button type="button" class="btn btn-warning" data-toggle="modal"
+                  data-target="#mechanicModal">Mechanics</button>
+              </div>
+              <div class="col-md-4"></div>
+            </div>
+
+            <div class="form-row submit-btn-row">
               <div class="col-md"></div>
               <div class="col-md-3">
-                <button class="site-btn" id="submitBtn">Submit</button>
+                <button class="site-btn button" onclick="return false;" id="submitBtn">Submit</button>
               </div>
               <div class="col-md"></div>
+            </div>
+
+            <!-- Category Modal -->
+            <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="categoryModalLabel">Select Categories</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body" id="categoryModalBody">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Accept</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mechanic Modal -->
+            <div class="modal fade" id="mechanicModal" tabindex="-1" role="dialog" aria-labelledby="mechanicModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="mechanicModalLabel">Select Mechanics</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body" id="mechanicModalBody">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Accept</button>
+                  </div>
+                </div>
+              </div>
             </div>
 
 
@@ -140,6 +195,8 @@
   <div th:replace="fragments/footer :: footer"></div>
 
   <div th:replace="fragments/boilerplate :: js"></div>
+  <script type="text/javascript" src="js/mechanicDict.js"></script>
+  <script type="text/javascript" src="js/categoryDict.js"></script>
   <script type="text/javascript" src="js/add.js"></script>
 </body>
 

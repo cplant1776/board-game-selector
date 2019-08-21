@@ -107,10 +107,14 @@
                 </div>
 
                 <!-- List User Games -->
-                <div th:unless="${games.isEmpty()}">
+                <div th:unless="${games.isEmpty()}" class="center-text">
                     <table class="table" id="search-results-table">
                         <div th:replace="fragments/game-results :: game-results"></div>
                     </table>
+                    <div class="d-flex flex-column align-items-center justify-content-between col-md">
+                        <button class="site-btn" id="addGameBtn">Add Game</button>
+                    </div>
+                    
                 </div>
 
             </div>

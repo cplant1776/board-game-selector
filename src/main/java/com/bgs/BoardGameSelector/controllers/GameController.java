@@ -1,7 +1,11 @@
 package com.bgs.BoardGameSelector.controllers;
 
+import com.bgs.BoardGameSelector.dao.GameCategoryDao;
+import com.bgs.BoardGameSelector.dao.GameMechanicDao;
 import com.bgs.BoardGameSelector.model.Game;
 import com.bgs.BoardGameSelector.dao.GameDao;
+import com.bgs.BoardGameSelector.model.GameCategory;
+import com.bgs.BoardGameSelector.model.GameMechanic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,11 +13,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+
 @Controller
 public class GameController {
 
     @Autowired
     private GameDao gameDao;
+
+    @Autowired
+    private GameCategoryDao gameCategoryDao;
+
+    @Autowired
+    private GameMechanicDao gameMechanicDao;
 
     @PostMapping("/game/success")
     public String addGame( @RequestParam(name="name", required=false, defaultValue="0") String name,
@@ -30,11 +42,14 @@ public class GameController {
                            @RequestParam(name="img-url", required=false, defaultValue="0") String imgURL,
                            @RequestParam(name="thumb-url", required=false, defaultValue="0") String thumbURL,
                            @RequestParam(name="bgg-url", required=false, defaultValue="0") String bggURL,
+                           @RequestParam(name="category", required=false, defaultValue="") String category,
+                           @RequestParam(name="mechanic", required=false, defaultValue="") String mechanic,
                              Model model) {
 
         // Instantiate new game
         Game game = new Game();
-        game.setGameId(generateGameId());
+        Integer gameId = generateGameId();
+        game.setGameId(gameId);
         game.setName(name);
         game.setDesigner(designer);
         game.setPublisher(publisher);
@@ -50,6 +65,7 @@ public class GameController {
         game.setThumb_url(thumbURL);
         game.setBgg_url(bggURL);
 
+        // Get author username (curreny logged in user)
         String username;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
@@ -62,6 +78,28 @@ public class GameController {
 
         gameDao.save(game);
         System.out.println("Added game successfully!");
+
+        // Save game category tags
+        int[] categories = Arrays.asList(category.split(","))
+                .stream()
+                .map(String::trim)
+                .mapToInt(Integer::parseInt).toArray();
+        for(Integer catId : categories)
+        {
+            GameCategory newRow = new GameCategory(gameId, catId);
+            gameCategoryDao.save(newRow);
+        }
+
+        // Save game mechanic tags
+        int[] mechanics = Arrays.asList(mechanic.split(","))
+                .stream()
+                .map(String::trim)
+                .mapToInt(Integer::parseInt).toArray();
+        for(Integer mechId : mechanics)
+        {
+            GameMechanic newRow = new GameMechanic(gameId, mechId);
+            gameMechanicDao.save(newRow);
+        }
 
         return "success";
     }
@@ -118,7 +156,7 @@ public class GameController {
         return "success";
     }
 
-    private int generateGameId() {
+    private Integer generateGameId() {
         System.out.println(gameDao.findMaxId() + 1);
         return gameDao.findMaxId() + 1;
     }

@@ -1900,6 +1900,10 @@ label {
 	margin: 10px;
 }
 
+.modal-label {
+	color: black;
+}
+
 .login-btn, .sign-up-btn, .search-btn-row {
  margin-top: 30px;
 }
