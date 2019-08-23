@@ -50,4 +50,22 @@ public interface GameSearchDao extends JpaRepository<Game, Long>, JpaSpecificati
                     "WHERE g.game_id = :gameId",
             nativeQuery = true)
     List<String> findGameCategoryById(@Param("gameId")Integer gameId);
+
+    @Query(
+            value = "SELECT c.id\n" +
+                    "FROM game g\n" +
+                    "INNER JOIN game_categories gc on g.game_id = gc.game_id\n" +
+                    "INNER JOIN category c on gc.category_id = c.id\n" +
+                    "WHERE g.game_id = :gameId",
+            nativeQuery = true)
+    List<Integer> findGameCategoryIdByGameId(@Param("gameId")Integer gameId);
+
+    @Query(
+            value = "SELECT m.id\n" +
+                    "FROM game g\n" +
+                    "INNER JOIN game_mechanics gm on g.game_id = gm.game_id\n" +
+                    "INNER JOIN mechanic m on gm.mechanic_id = m.id\n" +
+                    "WHERE g.game_id = :gameId",
+            nativeQuery = true)
+    List<Integer> findGameMechanicIdByGameId(@Param("gameId")Integer gameId);
 }

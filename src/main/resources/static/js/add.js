@@ -6,6 +6,8 @@ function fillSelectOptionsWithNumberRange(id, start, stop) {
 }
 
 $("#submitBtn").click(function () {
+  $('html,body, button').css('cursor','wait');
+
   // Get checked categories
   var checkedCategories = $('#categoryModalBody > div > input:checked')
   var categories = '';
@@ -28,13 +30,24 @@ $("#submitBtn").click(function () {
   var values = $("form").serialize();
 
   // Send POST request with params
+  addGame(values, catParam, mechParam)
+});
+
+function addGame(values, catParam, mechParam) {
   url = "/game/success";
   params = values + catParam + mechParam;
+  // console.log(params);
   var xhr = new XMLHttpRequest();
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
   xhr.send(params);
-});
+  
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        window.location = "/game/success";
+    }
+  }
+};
 
 // Form validation
 (function () {

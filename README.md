@@ -24,9 +24,8 @@ Going into this project, I knew practically nothing about actually developing a 
 
 ## Current Roadmap (To-Do)
 
-1. Make it pretty
 1. Add Unit Tests
-1. Voting function
+1. Voting/Ranking function
 
 ## Current Reflections
 

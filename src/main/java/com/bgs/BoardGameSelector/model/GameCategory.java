@@ -22,6 +22,10 @@ public class GameCategory {
         this.categoryId = categoryId;
     }
 
+    public GameCategory() {
+
+    }
+
     public Integer getId() {
         return id;
     }

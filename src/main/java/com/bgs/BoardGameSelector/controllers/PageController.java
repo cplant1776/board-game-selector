@@ -107,8 +107,15 @@ public class PageController {
         // Fetch game from DB
         Game game = gameDao.findByGameId(id);
 
+        // Get categories
+        List<Integer> cats = gameSearchDao.findGameCategoryIdByGameId(id);
+        List<Integer> mechs = gameSearchDao.findGameMechanicIdByGameId(id);
+
         // Add objects to model
         model.addAttribute("game", game);
+        model.addAttribute("gameId", id);
+        model.addAttribute("categories", cats);
+        model.addAttribute("mechanics", mechs);
         model.addAttribute("username", getLoggedInUsername());
 
         return "edit";

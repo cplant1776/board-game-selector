@@ -119,6 +119,8 @@ public class GameController {
                            @RequestParam(name="img-url", required=false, defaultValue="0") String imgURL,
                            @RequestParam(name="thumb-url", required=false, defaultValue="0") String thumbURL,
                            @RequestParam(name="bgg-url", required=false, defaultValue="0") String bggURL,
+                           @RequestParam(name="category", required=false, defaultValue="") String category,
+                           @RequestParam(name="mechanic", required=false, defaultValue="") String mechanic,
                            @RequestParam(name="game-id", required=true) int gameId,
                            Model model) {
 
@@ -142,6 +144,53 @@ public class GameController {
         gameDao.save(game);
         System.out.println("Updated game successfully!");
 
+        // Delte existing tags
+        try {
+            gameCategoryDao.deleteByGameId(gameId);
+            System.out.println("Deleted categories | " + gameId);
+        } catch (org.hibernate.StaleStateException e) {
+            System.out.println("No existing categories | " + gameId);
+        }
+
+        try {
+            gameMechanicDao.deleteByGameId(gameId);
+            System.out.println("Deleted mechanics | " + gameId);
+
+        } catch (org.hibernate.StaleStateException e) {
+            System.out.println("No existing mechanics | " + gameId);
+        }
+
+        // Save game category tags
+        try {
+            int[] categories = Arrays.asList(category.split(","))
+                    .stream()
+                    .map(String::trim)
+                    .mapToInt(Integer::parseInt).toArray();
+            for(Integer catId : categories)
+            {
+                GameCategory newRow = new GameCategory(gameId, catId);
+                gameCategoryDao.save(newRow);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("No category tags | " + gameId);
+        }
+
+
+        // Save game mechanic tags
+        try {
+            int[] mechanics = Arrays.asList(mechanic.split(","))
+                    .stream()
+                    .map(String::trim)
+                    .mapToInt(Integer::parseInt).toArray();
+            for(Integer mechId : mechanics)
+            {
+                GameMechanic newRow = new GameMechanic(gameId, mechId);
+                gameMechanicDao.save(newRow);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("No mechanic tags | " + gameId);
+        }
+
         return "success";
     }
 
@@ -153,6 +202,11 @@ public class GameController {
         else
             System.out.println("Successfully deleted game!");
 
+        return "success";
+    }
+
+    @GetMapping("/game/success")
+    public String editGameSuccess(Model model) {
         return "success";
     }
 

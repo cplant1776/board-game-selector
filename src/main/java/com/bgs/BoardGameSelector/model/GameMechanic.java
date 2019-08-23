@@ -22,6 +22,10 @@ public class GameMechanic {
         this.mechanicId = mechanicId;
     }
 
+    public GameMechanic() {
+
+    }
+
     public Integer getId() {
         return id;
     }
