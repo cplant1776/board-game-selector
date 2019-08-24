@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 @Transactional
 public interface UserDao extends CrudRepository<User, Long> {
     User findByUsername(String username);
