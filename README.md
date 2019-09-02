@@ -22,6 +22,16 @@ Going into this project, I knew practically nothing about actually developing a 
 * Users can upload their own avatar images
 * Can filter games by category/mechanic
 
+## Some Screenshots
+
+### Home Page
+
+![Home Page](media/screenshots/home_page.png "Home Page")
+
+### Game Page
+
+![Game Page](media/screenshots/game_page.jpg "Game Page")
+
 ## Current Roadmap (To-Do)
 
 1. Add Unit Tests
